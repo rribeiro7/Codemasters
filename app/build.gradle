@@ -43,5 +43,8 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.9.0'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-jackson:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     testCompile 'junit:junit:4.12'
 }
