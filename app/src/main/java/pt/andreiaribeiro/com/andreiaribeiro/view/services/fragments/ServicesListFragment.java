@@ -1,47 +1,43 @@
-package pt.andreiaribeiro.com.andreiaribeiro.view.services;
+package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
 
-public class ServicesListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ServicesListFragment extends Fragment {
 
-    Button btnPayments;
+
     RecyclerView rv;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_list);
-
-        Toast.makeText(this, "Welcome to the services screen.", Toast.LENGTH_SHORT).show();
-
-        btnPayments = (Button) findViewById(R.id.button_payments);
-        btnPayments.setOnClickListener(this);
-        rv = (RecyclerView) findViewById(R.id.rv_services);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
-
-        rv.setAdapter(new ServicesAdapter(this, getValidServices()));
+    public ServicesListFragment() {
+        // Required empty public constructor
     }
 
+    @Nullable
     @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this, PaymentsActivity.class);
-        startActivity(intent);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_settings_list, container, false);
+
+
+        rv = (RecyclerView) view.findViewById(R.id.rv_services);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(llm);
+
+        rv.setAdapter(new ServicesAdapter(getActivity(), getValidServices()));
+        return view;
     }
 
     private List<Service> getValidServices() {

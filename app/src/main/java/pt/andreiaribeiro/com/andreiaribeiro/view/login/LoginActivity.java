@@ -3,7 +3,6 @@ package pt.andreiaribeiro.com.andreiaribeiro.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.LoginFilter;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.view.services.ServicesFilterActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.LoginMock;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {

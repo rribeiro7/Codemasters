@@ -1,4 +1,4 @@
-package pt.andreiaribeiro.com.andreiaribeiro.view.services;
+package pt.andreiaribeiro.com.andreiaribeiro.view.services.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

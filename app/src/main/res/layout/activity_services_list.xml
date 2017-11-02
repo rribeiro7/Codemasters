@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pt.andreiaribeiro.com.andreiaribeiro.view.services.ServicesListActivity">
-
+    tools:context="pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesListActivity">
 
     <Button
         android:id="@+id/button_payments"
@@ -12,11 +11,9 @@
         android:layout_height="wrap_content"
         android:text="@string/action_go_to_payments" />
 
+    <FrameLayout
+        android:id="@+id/container_services_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_services"
-        />
 </android.support.constraint.ConstraintLayout>
