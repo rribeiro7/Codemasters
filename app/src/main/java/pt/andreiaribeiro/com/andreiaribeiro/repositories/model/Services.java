@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -15,64 +11,64 @@ public class Services {
 
     @PrimaryKey
     @JsonProperty("ServiceID")
-    protected int mServiceID;
+    private int serviceID;
 
     @ColumnInfo(name = "name")
     @JsonProperty("ServiceName")
-    protected String mServiceName;
+    private String serviceName;
 
     @ColumnInfo(name = "price")
     @JsonProperty("Price")
-    protected double mPrice;
+    private double price;
 
     @ColumnInfo(name = "activity_id")
     @JsonProperty("ActivityID")
-    protected int mActivityID;
+    private int activityID;
 
     @ColumnInfo(name = "activity_name")
     @JsonProperty("ActivityName")
-    protected String mActivityName;
+    private String activityName;
 
     public Services() {
     }
 
     public int getServiceID() {
-        return mServiceID;
+        return serviceID;
     }
 
     public void setServiceID(int serviceID) {
-        mServiceID = serviceID;
+        this.serviceID = serviceID;
     }
 
     public String getServiceName() {
-        return mServiceName;
+        return serviceName;
     }
 
     public void setServiceName(String serviceName) {
-        mServiceName = serviceName;
+        this.serviceName = serviceName;
     }
 
     public double getPrice() {
-        return mPrice;
+        return price;
     }
 
     public void setPrice(double price) {
-        mPrice = price;
+        this.price = price;
     }
 
     public int getActivityID() {
-        return mActivityID;
+        return activityID;
     }
 
     public void setActivityID(int activityID) {
-        mActivityID = activityID;
+        this.activityID = activityID;
     }
 
     public String getActivityName() {
-        return mActivityName;
+        return activityName;
     }
 
     public void setActivityName(String activityName) {
-        mActivityName = activityName;
+        this.activityName = activityName;
     }
 }

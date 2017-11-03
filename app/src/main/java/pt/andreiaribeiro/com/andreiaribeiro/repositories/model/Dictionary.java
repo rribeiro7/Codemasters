@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,28 +10,29 @@ import java.util.List;
 public class Dictionary {
 
     @JsonProperty("Language")
-    protected String mLanguage;
+    private String language;
+
     @JsonProperty("Keys")
-    protected List<KeyValue> mKeys = new ArrayList<>();
+    private List<KeyValue> keys = new ArrayList<>();
 
 
     public Dictionary() {
     }
 
     public String getLanguage() {
-        return mLanguage;
+        return language;
     }
 
-    public void setLanguage(String mLanguage) {
-        this.mLanguage = mLanguage;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public List<KeyValue> getKeys() {
-        return mKeys;
+        return keys;
     }
 
-    public void setKeys(List<KeyValue> mKeys) {
-        this.mKeys = mKeys;
+    public void setKeys(List<KeyValue> keys) {
+        this.keys = keys;
     }
 
 }

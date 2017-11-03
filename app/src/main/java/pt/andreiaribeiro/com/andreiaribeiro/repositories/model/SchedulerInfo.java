@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,26 +10,27 @@ import java.util.List;
 public class SchedulerInfo {
 
     @JsonProperty("Events")
-    protected List<SchedulerEvent> mEvents = new ArrayList<>();
+    private List<SchedulerEvent> events = new ArrayList<>();
+
     @JsonProperty("Actions")
-    protected List<ScheduleActions> mActions = new ArrayList<>();
+    private List<ScheduleActions> actions = new ArrayList<>();
 
     public SchedulerInfo() {
     }
 
     public List<SchedulerEvent> getEvents() {
-        return mEvents;
+        return events;
     }
 
-    public void setEvents(List<SchedulerEvent> mEvents) {
-        this.mEvents = mEvents;
+    public void setEvents(List<SchedulerEvent> events) {
+        this.events = events;
     }
 
     public List<ScheduleActions> getActions() {
-        return mActions;
+        return actions;
     }
 
-    public void setActions(List<ScheduleActions> mActions) {
-        this.mActions = mActions;
+    public void setActions(List<ScheduleActions> actions) {
+        this.actions = actions;
     }
 }

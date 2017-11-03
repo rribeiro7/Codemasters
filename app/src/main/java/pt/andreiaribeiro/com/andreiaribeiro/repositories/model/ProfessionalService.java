@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,56 +7,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ProfessionalService {
 
     @JsonProperty("ActivityID")
-    protected int mActivityID;
+    private int activityID;
+
     @JsonProperty("ActivityName")
-    protected String mActivityName;
+    private String activityName;
+
     @JsonProperty("ServiceID")
-    protected int mServiceID;
+    private int serviceID;
+
     @JsonProperty("ServiceName")
-    protected String mServiceName;
+    private String serviceName;
+
     @JsonProperty("Price")
-    protected Double mPrice;
+    private Double price;
 
     public void ProfessionalService() {
     }
 
     public int getActivityID() {
-        return mActivityID;
+        return activityID;
     }
 
-    public void setActivityID(int mActivityID) {
-        this.mActivityID = mActivityID;
+    public void setActivityID(int activityID) {
+        this.activityID = activityID;
     }
 
     public String getActivityName() {
-        return mActivityName;
+        return activityName;
     }
 
-    public void setActivityName(String mActivityName) {
-        this.mActivityName = mActivityName;
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
     }
 
     public int getServiceID() {
-        return mServiceID;
+        return serviceID;
     }
 
-    public void setServiceID(int mServiceID) {
-        this.mServiceID = mServiceID;
+    public void setServiceID(int serviceID) {
+        this.serviceID = serviceID;
     }
 
     public String getServiceName() {
-        return mServiceName;
+        return serviceName;
     }
 
-    public void setServiceName(String mServiceName) {
-        this.mServiceName = mServiceName;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public Double getPrice() {
-        return mPrice;
+        return price;
     }
 
-    public void setPrice(Double mPrice) {
-        this.mPrice = mPrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

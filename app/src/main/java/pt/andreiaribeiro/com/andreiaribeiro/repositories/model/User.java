@@ -13,76 +13,79 @@ public class User {
 
     @PrimaryKey
     @JsonProperty("ID")
-    protected int mID;
+    private int id;
 
     @ColumnInfo(name = "name")
     @JsonProperty("Name")
-    protected String mName;
+    private String name;
 
     @ColumnInfo(name = "birth_date")
     @JsonProperty("Birthdate")
-    protected String mBirthdate;
+    private String birthdate;
 
     @ColumnInfo(name = "email")
     @JsonProperty("Email")
-    protected String mEmail;
+    private String email;
 
     @ColumnInfo(name = "iban")
     @JsonProperty("IBAN")
-    protected String mIBAN;
+    private String iban;
 
     @ColumnInfo(name = "credit_card")
     @JsonProperty("CreditCard")
-    protected String mCreditCard;
+    private String creditCard;
 
     public User() {
+
     }
 
-    public int getID() {
-        return mID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int mID) {
-        this.mID = mID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBirthdate() {
-        return mBirthdate;
+        return birthdate;
     }
 
-    public void setBirthdate(String mBirthdate) {
-        this.mBirthdate = mBirthdate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getEmail() {
-        return mEmail;
+        return email;
     }
 
-    public void setEmail(String mEmail) {
-        this.mEmail = mEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getIBAN() {
-        return mIBAN;
+    public String getIban() {
+        return iban;
     }
 
-    public void setIBAN(String mIBAN) {
-        this.mIBAN = mIBAN;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 
     public String getCreditCard() {
-        return mCreditCard;
+        return creditCard;
     }
 
-    public void setCreditCard(String mCreditCard) {
-        this.mCreditCard = mCreditCard;
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 }
+
+

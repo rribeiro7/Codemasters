@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,56 +7,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Result {
 
     @JsonProperty("OK")
-    protected boolean mOK;
+    private boolean ok;
+
     @JsonProperty("Message")
-    protected String mMessage;
+    private String message;
+
     @JsonProperty("ShowMessage")
-    protected boolean mShowMessage;
+    private boolean showMessage;
+
     @JsonProperty("MessageType")
-    protected String mMessageType;
+    private String messageType;
+
     @JsonProperty("Obj")
-    protected Object mObj;
+    private Object obj;
 
     public Result() {
     }
 
-    public boolean isOK() {
-        return mOK;
+    public boolean isOk() {
+        return ok;
     }
 
-    public void setOK(boolean mOK) {
-        this.mOK = mOK;
+    public void setOk(boolean ok) {
+        this.ok = ok;
     }
 
     public String getMessage() {
-        return mMessage;
+        return message;
     }
 
-    public void setMessage(String mMessage) {
-        this.mMessage = mMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public boolean isShowMessage() {
-        return mShowMessage;
+        return showMessage;
     }
 
-    public void setShowMessage(boolean mShowMessage) {
-        this.mShowMessage = mShowMessage;
+    public void setShowMessage(boolean showMessage) {
+        this.showMessage = showMessage;
     }
 
     public String getMessageType() {
-        return mMessageType;
+        return messageType;
     }
 
-    public void setMessageType(String mMessageType) {
-        this.mMessageType = mMessageType;
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
     }
 
     public Object getObj() {
-        return mObj;
+        return obj;
     }
 
-    public void setObj(Object mObj) {
-        this.mObj = mObj;
+    public void setObj(Object obj) {
+        this.obj = obj;
     }
 }

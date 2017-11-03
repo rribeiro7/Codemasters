@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 14/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,56 +7,61 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserAuthInfo {
 
     @JsonProperty("UserID")
-    protected int mUserID;
+    private int userID;
+
     @JsonProperty("Username")
-    protected String mUsername;
+    private String username;
+
     @JsonProperty("Language")
-    protected String mLanguage;
+    private String language;
+
     @JsonProperty("DisplayName")
-    protected String mDisplayName;
+    private String displayName;
+
     @JsonProperty("UserType")
-    protected String mUserType;
+    private String userType;
 
     public UserAuthInfo() {
+
     }
 
     public int getUserID() {
-        return mUserID;
+        return userID;
     }
 
-    public void setUserID(int mUserID) {
-        this.mUserID = mUserID;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getUsername() {
-        return mUsername;
+        return username;
     }
 
-    public void setUsername(String mUsername) {
-        this.mUsername = mUsername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLanguage() {
-        return mLanguage;
+        return language;
     }
 
-    public void setLanguage(String mLanguage) {
-        this.mLanguage = mLanguage;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getDisplayName() {
-        return mDisplayName;
+        return displayName;
     }
 
-    public void setDisplayName(String mDisplayName) {
-        this.mDisplayName = mDisplayName;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getUserType() {
-        return mUserType;
+        return userType;
     }
 
-    public void setUserType(String mUserType) {
-        this.mUserType = mUserType;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

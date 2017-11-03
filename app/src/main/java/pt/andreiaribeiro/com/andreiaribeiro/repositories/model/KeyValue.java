@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,26 +7,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeyValue {
 
     @JsonProperty("Key")
-    protected String mKey;
+    private String key;
+
     @JsonProperty("Value")
-    protected String mValue;
+    private String value;
 
     public KeyValue() {
     }
 
     public String getKey() {
-        return mKey;
+        return key;
     }
 
-    public void setKey(String mKey) {
-        this.mKey = mKey;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getValue() {
-        return mValue;
+        return value;
     }
 
-    public void setValue(String mValue) {
-        this.mValue = mValue;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

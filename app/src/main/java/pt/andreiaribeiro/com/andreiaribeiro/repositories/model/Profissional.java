@@ -1,9 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
@@ -19,186 +15,177 @@ import java.util.List;
 public class Profissional {
 
     @JsonProperty("Services")
-    public List<Services> mServices = new ArrayList<>();
-
+    private List<Services> mServices = new ArrayList<>();
 
     @PrimaryKey
     @JsonProperty("Id")
-    protected int mId;
+    private int id;
 
     @ColumnInfo(name = "name")
     @JsonProperty("Name")
-    protected String mName;
+    private String name;
 
     @ColumnInfo(name = "description")
     @JsonProperty("Description")
-    protected String mDescription;
+    private String description;
 
     @ColumnInfo(name = "birth_date")
     @JsonProperty("Birthdate")
-    protected String mBirthdate;
+    private String birthdate;
 
     @ColumnInfo(name = "email")
     @JsonProperty("Email")
-    protected String mEmail;
+    private String email;
 
     @ColumnInfo(name = "main_photo_url")
     @JsonProperty("MainPhotoURL")
-    protected String mMainPhotoURL;
+    private String mainPhotoURL;
 
     @ColumnInfo(name = "geo_one")
     @JsonProperty("GeoOne")
-    protected KeyValue mGeoOne;
+    private KeyValue geoOne;
 
     @ColumnInfo(name = "geo_two")
     @JsonProperty("GeoTwo")
-    protected KeyValue mGeoTwo;
+    private KeyValue geoTwo;
 
     @ColumnInfo(name = "geo_three")
     @JsonProperty("GeoThree")
-    protected KeyValue mGeoThree;
+    private KeyValue geoThree;
 
     // Confidential
     @ColumnInfo(name = "vat")
     @JsonProperty("VAT")
-    protected String mVAT;
+    private String vat;
 
     @ColumnInfo(name = "iban")
     @JsonProperty("IBAN")
-    protected String mIBAN;
+    private String iban;
 
     @ColumnInfo(name = "formation")
     @JsonProperty("Formation")
-    protected String mFormation;
+    private String formation;
 
     @ColumnInfo(name = "cedula")
     @JsonProperty("Cedula")
-    protected String mCedula;
+    private String cedula;
 
     @ColumnInfo(name = "experience")
     @JsonProperty("Experience")
-    protected int mExperience;
+    private int experience;
 
     public void Profissional() {
     }
 
     public int getId() {
-        return mId;
+        return id;
     }
 
-    public void setId(int mId) {
-        this.mId = mId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
-    public void setDescription(String mDescription) {
-        this.mDescription = mDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getBirthdate() {
-        return mBirthdate;
+        return birthdate;
     }
 
-    public void setBirthdate(String mBirthdate) {
-        this.mBirthdate = mBirthdate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getEmail() {
-        return mEmail;
+        return email;
     }
 
-    public void setEmail(String mEmail) {
-        this.mEmail = mEmail;
-    }
-
-    public List<Services> getServices() {
-        return mServices;
-    }
-
-    public void setServices(List<Services> mServices) {
-        this.mServices = mServices;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMainPhotoURL() {
-        return mMainPhotoURL;
+        return mainPhotoURL;
     }
 
-    public void setMainPhotoURL(String mMainPhotoURL) {
-        this.mMainPhotoURL = mMainPhotoURL;
+    public void setMainPhotoURL(String mainPhotoURL) {
+        this.mainPhotoURL = mainPhotoURL;
     }
 
     public KeyValue getGeoOne() {
-        return mGeoOne;
+        return geoOne;
     }
 
-    public void setGeoOne(KeyValue mGeoOne) {
-        this.mGeoOne = mGeoOne;
+    public void setGeoOne(KeyValue geoOne) {
+        this.geoOne = geoOne;
     }
 
     public KeyValue getGeoTwo() {
-        return mGeoTwo;
+        return geoTwo;
     }
 
-    public void setGeoTwo(KeyValue mGeoTwo) {
-        this.mGeoTwo = mGeoTwo;
+    public void setGeoTwo(KeyValue geoTwo) {
+        this.geoTwo = geoTwo;
     }
 
     public KeyValue getGeoThree() {
-        return mGeoThree;
+        return geoThree;
     }
 
-    public void setGeoThree(KeyValue mGeoThree) {
-        this.mGeoThree = mGeoThree;
+    public void setGeoThree(KeyValue geoThree) {
+        this.geoThree = geoThree;
     }
 
-    public String getVAT() {
-        return mVAT;
+    public String getVat() {
+        return vat;
     }
 
-    public void setVAT(String mVAT) {
-        this.mVAT = mVAT;
+    public void setVat(String vat) {
+        this.vat = vat;
     }
 
-    public String getIBAN() {
-        return mIBAN;
+    public String getIban() {
+        return iban;
     }
 
-    public void setIBAN(String mIBAN) {
-        this.mIBAN = mIBAN;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 
     public String getFormation() {
-        return mFormation;
+        return formation;
     }
 
-    public void setFormation(String mFormation) {
-        this.mFormation = mFormation;
+    public void setFormation(String formation) {
+        this.formation = formation;
     }
 
     public String getCedula() {
-        return mCedula;
+        return cedula;
     }
 
-    public void setCedula(String mCedula) {
-        this.mCedula = mCedula;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public int getExperience() {
-        return mExperience;
+        return experience;
     }
 
-    public void setExperience(int mExperience) {
-        this.mExperience = mExperience;
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 }

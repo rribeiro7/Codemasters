@@ -1,125 +1,132 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ScheduleActions {
+
     @JsonProperty("ID")
-    protected int mID;
+    private int id;
+
     @JsonProperty("ProfessionalName")
-    protected String mProfessionalName;
+    private String professionalName;
+
     @JsonProperty("UserName")
-    protected String mUserName;
+    private String userName;
+
     @JsonProperty("ServiceName")
-    protected String mServiceName;
+    private String serviceName;
+
     @JsonProperty("Date")
-    protected String mDate;
+    private String date;
+
     @JsonProperty("Duration")
-    protected int mDuration;
+    private int duration;
+
     @JsonProperty("Price")
-    protected double mPrice;
+    private double price;
+
     @JsonProperty("Observations")
-    protected String mObservations;
+    private String observations;
+
     @JsonProperty("Professional_Observations")
-    protected String mProfessional_Observations;
+    private String professional_Observations;
+
     @JsonProperty("State")
-    protected String mState;
+    private String state;
+
     @JsonProperty("StateName")
-    protected String mStateName;
+    private String stateName;
 
     public ScheduleActions() {
     }
 
-    public int getID() {
-        return mID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int mID) {
-        this.mID = mID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProfessionalName() {
-        return mProfessionalName;
+        return professionalName;
     }
 
-    public void setProfessionalName(String mProfessionalName) {
-        this.mProfessionalName = mProfessionalName;
+    public void setProfessionalName(String professionalName) {
+        this.professionalName = professionalName;
     }
 
     public String getUserName() {
-        return mUserName;
+        return userName;
     }
 
-    public void setUserName(String mUserName) {
-        this.mUserName = mUserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getServiceName() {
-        return mServiceName;
+        return serviceName;
     }
 
-    public void setServiceName(String mServiceName) {
-        this.mServiceName = mServiceName;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public String getDate() {
-        return mDate;
+        return date;
     }
 
-    public void setDate(String mDate) {
-        this.mDate = mDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getDuration() {
-        return mDuration;
+        return duration;
     }
 
-    public void setDuration(int mDuration) {
-        this.mDuration = mDuration;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public double getPrice() {
-        return mPrice;
+        return price;
     }
 
-    public void setPrice(double mPrice) {
-        this.mPrice = mPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getObservations() {
-        return mObservations;
+        return observations;
     }
 
-    public void setObservations(String mObservations) {
-        this.mObservations = mObservations;
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 
     public String getProfessional_Observations() {
-        return mProfessional_Observations;
+        return professional_Observations;
     }
 
-    public void setProfessional_Observations(String mProfessional_Observations) {
-        this.mProfessional_Observations = mProfessional_Observations;
+    public void setProfessional_Observations(String professional_Observations) {
+        this.professional_Observations = professional_Observations;
     }
 
     public String getState() {
-        return mState;
+        return state;
     }
 
-    public void setState(String mState) {
-        this.mState = mState;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getStateName() {
-        return mStateName;
+        return stateName;
     }
 
-    public void setStateName(String mStateName) {
-        this.mStateName = mStateName;
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 }

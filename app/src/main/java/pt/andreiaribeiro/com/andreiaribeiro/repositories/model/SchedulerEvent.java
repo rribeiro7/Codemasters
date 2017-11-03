@@ -1,10 +1,6 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
-/**
- * Created by Rui on 13/09/2017.
- */
-/*TODO refactor desta classe quando estiver totalmente certa no serviço
- */
+//TODO refactor desta classe quando estiver totalmente certa no serviço
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,86 +9,96 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SchedulerEvent {
 
     @JsonProperty("id_schedule")
-    protected int mId_schedule;
+    private int idSchedule;
+
     @JsonProperty("title")
-    protected String mtitle;
+    private String title;
+
     @JsonProperty("editable")
-    protected boolean meditable;
+    private boolean editable;
+
     @JsonProperty("start")
-    protected String mstart;
+    private String start;
+
     @JsonProperty("end")
-    protected String mend;
+    private String end;
+
     @JsonProperty("state")
-    protected String mstate;
+    private String state;
+
     @JsonProperty("obs")
-    protected String mobs;
+    private String obs;
+
     @JsonProperty("backgroundColor")
-    protected String mbackgroundColor;
+    private String backgroundColor;
 
     public SchedulerEvent() {
+
     }
 
-    public int getmId_schedule() {
-        return mId_schedule;
+    public int getIdSchedule() {
+        return idSchedule;
     }
 
-    public void setmId_schedule(int mId_schedule) {
-        this.mId_schedule = mId_schedule;
+    public void setIdSchedule(int idSchedule) {
+        this.idSchedule = idSchedule;
     }
 
-    public String getMtitle() {
-        return mtitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMtitle(String mtitle) {
-        this.mtitle = mtitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public boolean isMeditable() {
-        return meditable;
+    public boolean isEditable() {
+        return editable;
     }
 
-    public void setMeditable(boolean meditable) {
-        this.meditable = meditable;
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
-    public String getMstart() {
-        return mstart;
+    public String getStart() {
+        return start;
     }
 
-    public void setMstart(String mstart) {
-        this.mstart = mstart;
+    public void setStart(String start) {
+        this.start = start;
     }
 
-    public String getMend() {
-        return mend;
+    public String getEnd() {
+        return end;
     }
 
-    public void setMend(String mend) {
-        this.mend = mend;
+    public void setEnd(String end) {
+        this.end = end;
     }
 
-    public String getMstate() {
-        return mstate;
+    public String getState() {
+        return state;
     }
 
-    public void setMstate(String mstate) {
-        this.mstate = mstate;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getMobs() {
-        return mobs;
+    public String getObs() {
+        return obs;
     }
 
-    public void setMobs(String mobs) {
-        this.mobs = mobs;
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 
-    public String getMbackgroundColor() {
-        return mbackgroundColor;
+    public String getBackgroundColor() {
+        return backgroundColor;
     }
 
-    public void setMbackgroundColor(String mbackgroundColor) {
-        this.mbackgroundColor = mbackgroundColor;
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }
+
+
