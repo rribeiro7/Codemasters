@@ -11,4 +11,9 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
 
+    <!-- Temp strings for the flow -->
+    <string name="action_go_to_services">Services</string>
+    <string name="action_go_to_payments">Payments</string>
+    <string name="action_go_to_settings">Settings</string>
+
 </resources>
