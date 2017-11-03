@@ -27,7 +27,7 @@ public class ServicesListActivity extends AppCompatActivity implements View.OnCl
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_services_list, new ServicesListFragment(), ServicesListFragment.class.getSimpleName())
+                .replace(R.id.container_services, new ServicesListFragment(), ServicesListFragment.class.getSimpleName())
                 .commit();
 
     }

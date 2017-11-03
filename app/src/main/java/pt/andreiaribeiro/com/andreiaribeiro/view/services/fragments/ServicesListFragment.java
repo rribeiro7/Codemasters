@@ -1,25 +1,32 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
 
-public class ServicesListFragment extends Fragment {
+public class ServicesListFragment extends Fragment implements RecyclerViewOnItemClickListener.OnItemClickListener {
 
 
     RecyclerView rv;
+    List<Service> servicesList;
 
     public ServicesListFragment() {
         // Required empty public constructor
@@ -28,16 +35,40 @@ public class ServicesListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_settings_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_services_list, container, false);
 
+        servicesList = new ArrayList<>();
+        servicesList = getValidServices();
 
         rv = (RecyclerView) view.findViewById(R.id.rv_services);
-
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
+        rv.setAdapter(new ServicesAdapter(getActivity(), servicesList));
+        rv.addOnItemTouchListener(new RecyclerViewOnItemClickListener(getActivity(), this));
 
-        rv.setAdapter(new ServicesAdapter(getActivity(), getValidServices()));
         return view;
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getActivity(), servicesList.get(position).getDescription() + "", Toast.LENGTH_SHORT).show();
+
+//        ServicesDetailFragment details = new ServicesDetailFragment();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            details.setSharedElementEnterTransition(new ServicesDetailFragment());
+//            details.setEnterTransition(new Fade());
+//            setExitTransition(new Fade());
+//            details.setSharedElementReturnTransition(nmew ServicesDetailFragment());
+//        }
+
+        ImageView serviceImage = (ImageView) view.findViewById(R.id.iv_service_photo) ;
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .addSharedElement(serviceImage, "service_image")
+                .replace(R.id.container_services, new ServicesDetailFragment(), ServicesDetailFragment.class.getSimpleName())
+                .addToBackStack(ServicesDetailFragment.class.getSimpleName())
+                .commit();
+
     }
 
     private List<Service> getValidServices() {
@@ -66,4 +97,5 @@ public class ServicesListFragment extends Fragment {
 
         return servicesList;
     }
+
 }
