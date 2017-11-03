@@ -1,4 +1,4 @@
-package pt.andreiaribeiro.com.andreiaribeiro.network;
+package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
 /**
  * Created by Rui on 13/09/2017.
