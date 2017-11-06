@@ -1,17 +1,19 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Entity(tableName = "services")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Services {
 
     @PrimaryKey
     @JsonProperty("ServiceID")
-    private int serviceID;
+    private int id;
 
     @ColumnInfo(name = "name")
     @JsonProperty("ServiceName")
@@ -32,12 +34,12 @@ public class Services {
     public Services() {
     }
 
-    public int getServiceID() {
-        return serviceID;
+    public int getId() {
+        return id;
     }
 
-    public void setServiceID(int serviceID) {
-        this.serviceID = serviceID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getServiceName() {

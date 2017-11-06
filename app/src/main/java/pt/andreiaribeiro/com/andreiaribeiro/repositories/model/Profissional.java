@@ -2,6 +2,7 @@ package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,6 +15,9 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Profissional {
 
+    //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
+
+    @Ignore
     @JsonProperty("Services")
     private List<Services> mServices = new ArrayList<>();
 
@@ -41,15 +45,15 @@ public class Profissional {
     @JsonProperty("MainPhotoURL")
     private String mainPhotoURL;
 
-    @ColumnInfo(name = "geo_one")
+    @Ignore
     @JsonProperty("GeoOne")
     private KeyValue geoOne;
 
-    @ColumnInfo(name = "geo_two")
+    @Ignore
     @JsonProperty("GeoTwo")
     private KeyValue geoTwo;
 
-    @ColumnInfo(name = "geo_three")
+    @Ignore
     @JsonProperty("GeoThree")
     private KeyValue geoThree;
 

@@ -8,17 +8,17 @@ import android.arch.persistence.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserDao {
+public interface ServicesDao {
 
-    @Query("SELECT * from user")
-    List<User> getAllUsers();
+    @Query("SELECT * from services")
+    List<Services> getAllServices();
 
-    @Query("SELECT * FROM user where id = :id")
-    User getUser(int id);
+    @Query("SELECT * FROM services where id = :id")
+    Services getService(int id);
 
     @Insert
-    void insertUser(User user);
+    void insertService(Services services);
 
     @Delete
-    void deleteUser(User user);
+    void deleteService(Services services);
 }
