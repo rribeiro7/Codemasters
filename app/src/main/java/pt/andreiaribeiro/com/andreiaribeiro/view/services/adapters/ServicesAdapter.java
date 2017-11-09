@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     }
 
     static class ServicesViewHolder extends RecyclerView.ViewHolder {
+
         TextView description;
         TextView professional;
         TextView date;
@@ -53,6 +55,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
         ServicesViewHolder(View itemView) {
             super(itemView);
+
             description = (TextView) itemView.findViewById(R.id.tv_service_description);
             professional = (TextView) itemView.findViewById(R.id.tv_service_professional);
             date = (TextView) itemView.findViewById(R.id.service_date);

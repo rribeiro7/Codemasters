@@ -1,47 +1,74 @@
-package pt.andreiaribeiro.com.andreiaribeiro.view.services;
+package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
-import android.content.Intent;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.transition.Fade;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
 
-public class ServicesListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ServicesListFragment extends Fragment implements RecyclerViewOnItemClickListener.OnItemClickListener {
 
-    Button btnPayments;
+
     RecyclerView rv;
+    List<Service> servicesList;
 
+    public ServicesListFragment() {
+        // Required empty public constructor
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_list);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_services_list, container, false);
 
-        Toast.makeText(this, "Welcome to the services screen.", Toast.LENGTH_SHORT).show();
+        servicesList = new ArrayList<>();
+        servicesList = getValidServices();
 
-        btnPayments = (Button) findViewById(R.id.button_payments);
-        btnPayments.setOnClickListener(this);
-        rv = (RecyclerView) findViewById(R.id.rv_services);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv = (RecyclerView) view.findViewById(R.id.rv_services);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
+        rv.setAdapter(new ServicesAdapter(getActivity(), servicesList));
+        rv.addOnItemTouchListener(new RecyclerViewOnItemClickListener(getActivity(), this));
 
-        rv.setAdapter(new ServicesAdapter(this, getValidServices()));
+        return view;
     }
 
     @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this, PaymentsActivity.class);
-        startActivity(intent);
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getActivity(), servicesList.get(position).getDescription() + "", Toast.LENGTH_SHORT).show();
+
+//        ServicesDetailFragment details = new ServicesDetailFragment();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            details.setSharedElementEnterTransition(new ServicesDetailFragment());
+//            details.setEnterTransition(new Fade());
+//            setExitTransition(new Fade());
+//            details.setSharedElementReturnTransition(nmew ServicesDetailFragment());
+//        }
+
+        ImageView serviceImage = (ImageView) view.findViewById(R.id.iv_service_photo) ;
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .addSharedElement(serviceImage, "service_image")
+                .replace(R.id.container_services, new ServicesDetailFragment(), ServicesDetailFragment.class.getSimpleName())
+                .addToBackStack(ServicesDetailFragment.class.getSimpleName())
+                .commit();
+
     }
 
     private List<Service> getValidServices() {
@@ -70,4 +97,5 @@ public class ServicesListActivity extends AppCompatActivity implements View.OnCl
 
         return servicesList;
     }
+
 }
