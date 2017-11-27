@@ -11,9 +11,8 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments.ServicesListFragment;
 
-public class ServicesListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ServicesListActivity extends AppCompatActivity{ //implements View.OnClickListener {
 
-    Button btnPayments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,6 @@ public class ServicesListActivity extends AppCompatActivity implements View.OnCl
 
         Toast.makeText(this, "Welcome to the services screen.", Toast.LENGTH_SHORT).show();
 
-        btnPayments = (Button) findViewById(R.id.button_payments);
-        btnPayments.setOnClickListener(this);
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_services, new ServicesListFragment(), ServicesListFragment.class.getSimpleName())
@@ -32,11 +28,11 @@ public class ServicesListActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this, PaymentsActivity.class);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onClick(View v) {
+//        Intent intent = new Intent(this, PaymentsActivity.class);
+//        startActivity(intent);
+//    }
 
 
 }

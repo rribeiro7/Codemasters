@@ -6,13 +6,13 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalDao;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Profissional;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Professional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Services;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ServicesDao;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.User;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserDao;
 
-@Database(entities = {Profissional.class, Services.class, User.class}, version = 1)
+@Database(entities = {Professional.class, Services.class, User.class}, version = 1)
 public abstract class LiberiixDatabase extends RoomDatabase {
 
     private static LiberiixDatabase INSTANCE;

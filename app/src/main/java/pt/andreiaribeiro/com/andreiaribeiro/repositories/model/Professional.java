@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity(tableName = "professional")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Profissional {
+public class Professional {
 
     //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
 

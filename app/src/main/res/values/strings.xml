@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndreiaRibeiro</string>
+    <string name="app_name">Liberiix</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -12,8 +12,24 @@
     <string name="error_field_required">This field is required</string>
 
     <!-- Temp strings for the flow -->
-    <string name="action_go_to_services">Services</string>
-    <string name="action_go_to_payments">Payments</string>
+    <string name="action_go_to_list">Search</string>
     <string name="action_go_to_settings">Settings</string>
+    <string name="action_go_to_detail">Details</string>
+    <string name="action_go_to_schedule">Schedule</string>
+    <string name="action_go_to_payments">Payments</string>
+
+    <!-- Filter screen -->
+    <string name="filter_generic">Generic Search</string>
+    <string name="filter_activity">Activity</string>
+    <string name="filter_services">Services</string>
+    <string name="filter_name">Name</string>
+    <string name="filter_email">Email</string>
+    <string name="filter_country">Country</string>
+    <string name="filter_district">District</string>
+    <string name="filter_council">Council</string>
+
+
+
+
 
 </resources>
