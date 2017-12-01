@@ -1,12 +1,14 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,11 +16,14 @@ import com.squareup.picasso.Picasso;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Professional;
+import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 
 
 public class ServicesDetailFragment extends Fragment {
 
     private TextView txtTitle, txtActivity, txtDateBirth, txtDescription, txtEmail, txtExperience, txtFormation, txtLocation, txtService;
+    private Button btnSchedule;
 
     public ServicesDetailFragment() {
     }
@@ -30,6 +35,15 @@ public class ServicesDetailFragment extends Fragment {
 
         ImageView serviceDetailPhoto = (ImageView) view.findViewById(R.id.iv_service_image_detail);
         Picasso.with(getActivity()).load("http://casavivaobras.pt/foto-especialidade/canalizacao/trabalhos-de-canalizacao-022.jpg").into(serviceDetailPhoto);
+        setLayout(view);
+
+        btnSchedule.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplication(), PaymentsActivity.class);
+                startActivity(intent);
+            }
+        } );
         return view;
     }
 
@@ -43,6 +57,7 @@ public class ServicesDetailFragment extends Fragment {
         txtFormation = (TextView)view.findViewById(R.id.details_txtFormation);
         txtLocation = (TextView)view.findViewById(R.id.details_txtLocation);
         txtService = (TextView)view.findViewById(R.id.details_txtService);
+        btnSchedule = (Button)view.findViewById(R.id.details_btnSchedule);
     }
 
     private void loadData(Professional prof){
