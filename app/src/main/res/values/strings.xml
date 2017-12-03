@@ -29,6 +29,13 @@
     <string name="filter_council">Council</string>
     <string name="filter_clean">Limpar</string>
 
+    <!-- Register screens -->
+    <string name="rs_name">Nome</string>
+    <string name="rs_email">E-mail</string>
+    <string name="rs_confirmpassword">Confirm Password</string>
+    <string name="rs_password">Password</string>
+    <string name="rs_register">Registar</string>
+
 
 
 
