@@ -28,9 +28,9 @@ import pt.andreiaribeiro.com.andreiaribeiro.mocks.FiltersMock;
 
 
 
-public class ServicesFilterActivity extends AppCompatActivity implements View.OnClickListener {
+public class ServicesFilterActivity extends AppCompatActivity {
 
-    Button btnServices;
+    Button btnServices, btnClean;
     Spinner sActivity;
     Spinner sServices;
     Spinner sCountry;
@@ -53,28 +53,42 @@ public class ServicesFilterActivity extends AppCompatActivity implements View.On
         loadSpinnerActivity();
 
         loadSpinnerCountry();
-        Toast.makeText(this, "Welcome to the services filter screen.", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Welcome to the services filter screen.", Toast.LENGTH_SHORT).show();
 
-        btnServices.setOnClickListener(this);
+        btnServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveFilters();
+                Intent intent = new Intent(ServicesFilterActivity.this, ServicesListActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtGeneric.setText("");
+                txtName.setText("");
+                txtEmail.setText("");
+                sActivity.setSelection(0);
+                sServices.setSelection(0);
+                sCountry.setSelection(0);
+                sDistrict.setSelection(0);
+                sCouncil.setSelection(0);
+            }
+        });
     }
 
     private void setLayout() {
         txtGeneric = (AutoCompleteTextView) findViewById(R.id.filter_genericsearch);
         txtName = (EditText) findViewById(R.id.filter_name);
         txtEmail = (EditText) findViewById(R.id.filter_email);
-        btnServices = (Button) findViewById(R.id.button_services);
+        btnServices = (Button) findViewById(R.id.filter_btnSearch);
+        btnClean = (Button) findViewById(R.id.filter_btnClean);
         sActivity = (Spinner) findViewById(R.id.filter_activity);
         sServices = (Spinner) findViewById(R.id.filter_service);
         sCountry = (Spinner) findViewById(R.id.filter_country);
         sDistrict = (Spinner) findViewById(R.id.filter_district);
         sCouncil = (Spinner) findViewById(R.id.filter_council);
-    }
-
-    @Override
-    public void onClick(View v) {
-        saveFilters();
-        Intent intent = new Intent(this, ServicesListActivity.class);
-        startActivity(intent);
     }
 
     private void loadSpinnerActivity(){
