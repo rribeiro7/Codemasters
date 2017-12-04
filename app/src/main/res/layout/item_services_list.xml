@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="6dp">
 
     <ImageView
         android:id="@+id/iv_service_photo"
@@ -20,7 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/iv_service_photo"
         android:text="DESCTIPTION"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_service_professional"
