@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <LinearLayout
     android:id="@+id/detail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/details_txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TESTE" />
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:text="NOME PROFISSIONAL" />
 
     <!--ToDo Inserir um flipImage por causa da galeria de fotos-->
     <ImageView
@@ -17,59 +26,66 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:transitionName="service_image" />
 
     <LinearLayout
         android:id="@+id/details_ly_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACTIVIDADE" />
+            android:text="Atividade: " />
 
         <TextView
             android:id="@+id/details_txtActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MEDICO E DENTISTA" />
+            android:layout_marginLeft="10dp"
+            android:text="Medico" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/details_ly_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Serviço" />
+            android:text="Serviço: " />
 
         <TextView
             android:id="@+id/details_txtService"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MEDICO E DENTISTA" />
+            android:layout_marginLeft="10dp"
+            android:text="Medicina Geral" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/details_ly_datebirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACTIVIDADE" />
+            android:text="Data Nascimento: " />
 
         <TextView
             android:id="@+id/details_txtDateBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="2001-02-30" />
     </LinearLayout>
 
@@ -77,17 +93,19 @@
         android:id="@+id/details_ly_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail" />
+            android:text="E-mail: " />
 
         <TextView
             android:id="@+id/details_txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="me@liberiix.com" />
     </LinearLayout>
 
@@ -95,17 +113,19 @@
         android:id="@+id/details_ly_formation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Formação" />
+            android:text="Formação: " />
 
         <TextView
             android:id="@+id/details_txtFormation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Graduado em ciencias" />
     </LinearLayout>
 
@@ -113,6 +133,7 @@
         android:id="@+id/details_ly_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -124,6 +145,7 @@
             android:id="@+id/details_txtDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Descrição do que faço" />
     </LinearLayout>
 
@@ -131,17 +153,19 @@
         android:id="@+id/details_ly_experience"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Experience" />
+            android:text="Experiencia: " />
 
         <TextView
             android:id="@+id/details_txtExperience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Experiencia em cenas" />
     </LinearLayout>
 
@@ -149,17 +173,19 @@
         android:id="@+id/details_ly_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Localização" />
+            android:text="Localização: " />
 
         <TextView
             android:id="@+id/details_txtLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Lisboa" />
     </LinearLayout>
 
@@ -170,3 +196,5 @@
         android:text="@string/action_go_to_schedule" />
 
 </LinearLayout>
+
+</RelativeLayout>
