@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Professional;
+import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 
@@ -23,7 +24,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFil
 public class ServicesDetailFragment extends Fragment {
 
     private TextView txtTitle, txtActivity, txtDateBirth, txtDescription, txtEmail, txtExperience, txtFormation, txtLocation, txtService;
-    private Button btnSchedule;
+    private Button btnSchedule, btnMessage;
 
     public ServicesDetailFragment() {
     }
@@ -44,6 +45,14 @@ public class ServicesDetailFragment extends Fragment {
                 startActivity(intent);
             }
         } );
+
+        btnMessage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplication(), ChatActivity.class);
+                startActivity(intent);
+            }
+        } );
         return view;
     }
 
@@ -58,6 +67,7 @@ public class ServicesDetailFragment extends Fragment {
         txtLocation = (TextView)view.findViewById(R.id.details_txtLocation);
         txtService = (TextView)view.findViewById(R.id.details_txtService);
         btnSchedule = (Button)view.findViewById(R.id.details_btnSchedule);
+        btnMessage = (Button)view.findViewById(R.id.details_btnMessage);
     }
 
     private void loadData(Professional prof){

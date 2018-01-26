@@ -17,6 +17,7 @@
     <string name="action_go_to_detail">Details</string>
     <string name="action_go_to_schedule">Schedule</string>
     <string name="action_go_to_payments">Payments</string>
+    <string name="action_go_to_chat">Mensagens</string>
 
     <!-- Filter screen -->
     <string name="filter_generic">Generic Search</string>
