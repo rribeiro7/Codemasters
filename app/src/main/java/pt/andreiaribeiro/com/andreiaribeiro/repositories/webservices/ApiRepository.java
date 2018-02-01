@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfo;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -40,13 +40,13 @@ public class ApiRepository {
      * @param password {@see java.lang.String} The user password.
      * @param cb       {@see retrofit.Callback}<{@see BaseResponse}> The Callback of the request.
      */
-    public void authenticate(String email, String password, @NonNull Callback<BaseResponse<UserAuthInfo>> cb) {
+    public void authenticate(String email, String password, @NonNull Callback<BaseResponse<UserAuthInfoModel>> cb) {
 
         MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
         RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"type\": \"user\",\r\n    \"email\": \""
                 + email + "\",\r\n    \"password\": \"" + password + "\"\r\n}");
 
-        Call<BaseResponse<UserAuthInfo>> call = service.authenticate(requestBody);
+        Call<BaseResponse<UserAuthInfoModel>> call = service.authenticate(requestBody);
         call.enqueue(cb);
     }
 

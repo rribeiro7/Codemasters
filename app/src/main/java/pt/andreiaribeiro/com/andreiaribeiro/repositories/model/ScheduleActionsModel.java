@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ScheduleActions {
+public class ScheduleActionsModel {
 
     @JsonProperty("ID")
     private int id;
@@ -39,7 +39,7 @@ public class ScheduleActions {
     @JsonProperty("StateName")
     private String stateName;
 
-    public ScheduleActions() {
+    public ScheduleActionsModel() {
     }
 
     public int getId() {

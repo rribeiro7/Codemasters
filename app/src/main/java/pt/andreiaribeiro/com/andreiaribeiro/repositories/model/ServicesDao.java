@@ -11,14 +11,14 @@ import java.util.List;
 public interface ServicesDao {
 
     @Query("SELECT * from services")
-    List<Services> getAllServices();
+    List<ServicesModel> getAllServices();
 
     @Query("SELECT * FROM services where id = :id")
-    Services getService(int id);
+    ServicesModel getService(int id);
 
     @Insert
-    void insertService(Services services);
+    void insertService(ServicesModel services);
 
     @Delete
-    void deleteService(Services services);
+    void deleteService(ServicesModel services);
 }

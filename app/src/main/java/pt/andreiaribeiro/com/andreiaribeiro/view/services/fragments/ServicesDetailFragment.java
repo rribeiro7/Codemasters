@@ -15,10 +15,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.Professional;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
-import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 
 
 public class ServicesDetailFragment extends Fragment {
@@ -70,7 +69,7 @@ public class ServicesDetailFragment extends Fragment {
         btnMessage = (Button)view.findViewById(R.id.details_btnMessage);
     }
 
-    private void loadData(Professional prof){
+    private void loadData(ProfessionalModel prof){
         txtTitle.setText(prof.getName());
         txtDateBirth.setText(prof.getBirthdate());
         txtDescription.setText(prof.getDescription());

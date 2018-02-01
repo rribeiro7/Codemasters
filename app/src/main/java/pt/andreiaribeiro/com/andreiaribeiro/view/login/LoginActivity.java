@@ -13,13 +13,13 @@ import android.widget.Toast;
 import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfo;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Callback<BaseResponse<UserAuthInfo>> {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Callback<BaseResponse<UserAuthInfoModel>> {
 
     private AutoCompleteTextView txtEmail;
     private EditText txtPassword;
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onResponse(@NonNull Call<BaseResponse<UserAuthInfo>> call, @NonNull Response<BaseResponse<UserAuthInfo>> response) {
+    public void onResponse(@NonNull Call<BaseResponse<UserAuthInfoModel>> call, @NonNull Response<BaseResponse<UserAuthInfoModel>> response) {
         if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
                 && response.body().getBodyResponse().getObj() != null) {
             Toast.makeText(this, "Login with success.", Toast.LENGTH_SHORT).show();
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onFailure(@NonNull Call<BaseResponse<UserAuthInfo>> call, Throwable t) {
+    public void onFailure(@NonNull Call<BaseResponse<UserAuthInfoModel>> call, Throwable t) {
         Toast.makeText(this, "There was an error with the Login. Please try again.", Toast.LENGTH_SHORT).show();
     }
 

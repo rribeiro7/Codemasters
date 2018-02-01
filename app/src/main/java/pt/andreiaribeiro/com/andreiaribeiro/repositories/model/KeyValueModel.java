@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class KeyValue {
+public class KeyValueModel {
 
     @JsonProperty("Key")
     private String key;
@@ -12,7 +12,7 @@ public class KeyValue {
     @JsonProperty("Value")
     private String value;
 
-    public KeyValue() {
+    public KeyValueModel() {
     }
 
     public String getKey() {

@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.User;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.StringUtils;
 
 /**
@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveInfo() {
-        User user = new User();
+        UserModel user = new UserModel();
         user.setName(txtName.getText().toString());
         user.setEmail(txtEmail.getText().toString());
         //TODO falta password
