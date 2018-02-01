@@ -2,6 +2,7 @@ package pt.andreiaribeiro.com.andreiaribeiro.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -9,11 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfo;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
-import pt.andreiaribeiro.com.andreiaribeiro.utils.LoginMock;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Callback<BaseResponse<UserAuthInfo>> {
 
     private AutoCompleteTextView txtEmail;
     private EditText txtPassword;
@@ -34,13 +40,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (LoginMock.doLogin(txtEmail.getText().toString(), txtPassword.getText().toString())) {
-            Toast.makeText(this, "Login with success", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, ServicesFilterActivity.class);
-            startActivity(intent);
+        if (isLoginValid(txtEmail.getText().toString(), txtPassword.getText().toString())) {
+            LiberiixApplication.getApiRepositoryInstance(this).authenticate(txtEmail.getText().toString(), txtPassword.getText().toString(), this);
         } else {
-            Toast.makeText(this, "Login error!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill both username and password fields!", Toast.LENGTH_SHORT).show();
         }
     }
 
+    @Override
+    public void onResponse(@NonNull Call<BaseResponse<UserAuthInfo>> call, @NonNull Response<BaseResponse<UserAuthInfo>> response) {
+        if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
+                && response.body().getBodyResponse().getObj() != null) {
+            Toast.makeText(this, "Login with success.", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, ServicesFilterActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "There was an error with the Login. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(@NonNull Call<BaseResponse<UserAuthInfo>> call, Throwable t) {
+        Toast.makeText(this, "There was an error with the Login. Please try again.", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isLoginValid(String username, String password) {
+        return !username.isEmpty() && !password.isEmpty();
+    }
 }

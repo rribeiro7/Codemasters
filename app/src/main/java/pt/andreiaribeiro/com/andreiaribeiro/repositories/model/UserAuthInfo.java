@@ -7,30 +7,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserAuthInfo {
 
     @JsonProperty("UserID")
-    private int userID;
+    private int userId;
 
     @JsonProperty("Username")
     private String username;
 
     @JsonProperty("Language")
-    private String language;
+    private int Language;
 
     @JsonProperty("DisplayName")
     private String displayName;
 
     @JsonProperty("UserType")
-    private String userType;
+    private int userType;
+
+    @JsonProperty("IncompleteProfile_Location")
+    private boolean incompleteProfileLocation;
+
+    @JsonProperty("IncompleteProfile_Services")
+    private boolean incompleteProfileServices;
+
+    @JsonProperty("IncompleteProfile_PaymentInfo")
+    private boolean incompleteProfilePaymentInfo;
 
     public UserAuthInfo() {
-
     }
 
-    public int getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -41,12 +49,12 @@ public class UserAuthInfo {
         this.username = username;
     }
 
-    public String getLanguage() {
-        return language;
+    public int getLanguage() {
+        return Language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLanguage(int language) {
+        Language = language;
     }
 
     public String getDisplayName() {
@@ -57,11 +65,35 @@ public class UserAuthInfo {
         this.displayName = displayName;
     }
 
-    public String getUserType() {
+    public int getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    public boolean getIncompleteProfileLocation() {
+        return incompleteProfileLocation;
+    }
+
+    public void setIncompleteProfileLocation(boolean incompleteProfileLocation) {
+        this.incompleteProfileLocation = incompleteProfileLocation;
+    }
+
+    public boolean getIncompleteProfileServices() {
+        return incompleteProfileServices;
+    }
+
+    public void setIncompleteProfileServices(boolean incompleteProfileServices) {
+        this.incompleteProfileServices = incompleteProfileServices;
+    }
+
+    public boolean getIncompleteProfilePaymentInfo() {
+        return incompleteProfilePaymentInfo;
+    }
+
+    public void setIncompleteProfilePaymentInfo(boolean incompleteProfilePaymentInfo) {
+        this.incompleteProfilePaymentInfo = incompleteProfilePaymentInfo;
     }
 }

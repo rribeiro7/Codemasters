@@ -1,12 +1,12 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.webservices;
 
-/**
- * Created by Rui on 20/11/2017.
- */
 import android.support.annotation.NonNull;
 
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfo;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,45 +15,39 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class ApiRepository {
 
-    private ApiService mService;
-    private Retrofit mRetrofit;
+    private ApiService service;
+    private Retrofit retrofit;
 
-    public ApiRepository(String endpoint) {
+    public ApiRepository(String baseUrl) {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(endpoint)
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
                 .client(httpClient.build())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        mService = mRetrofit.create(ApiService.class);
+        service = retrofit.create(ApiService.class);
     }
 
     /**
-     * Procedure responsible for getting user's information
-     *
-     * @param type {@see java.lang.String} The Type of user required.
-     * @param cb   {@see retrofit.Callback}<{@see UserResponse}> The Callback of the request.
+     * @param email    {@see java.lang.String} The user email.
+     * @param password {@see java.lang.String} The user password.
+     * @param cb       {@see retrofit.Callback}<{@see BaseResponse}> The Callback of the request.
      */
-    public void getUser(String type, String email, String password, @NonNull Callback<UserAuthInfo> cb) {
-        Call<UserAuthInfo> call = mService.getUser(type, email, password);
+    public void authenticate(String email, String password, @NonNull Callback<BaseResponse<UserAuthInfo>> cb) {
+
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"type\": \"user\",\r\n    \"email\": \""
+                + email + "\",\r\n    \"password\": \"" + password + "\"\r\n}");
+
+        Call<BaseResponse<UserAuthInfo>> call = service.authenticate(requestBody);
         call.enqueue(cb);
     }
-
-    /**
-     * Procedure responsible for getting user's recent media information
-     *
-     * @param accessToken {@see java.lang.String} The Access Token required.
-     * @param cb          {@see retrofit.Callback}<{@see UserMediaRecentResponse}> The Callback of the request.
-     */
-//    public void getUserRecentMedia(String accessToken, @NonNull Callback<UserMediaRecentResponse> cb) {
-//        Call<UserMediaRecentResponse> call = mService.getUserMediaRecent(accessToken);
-//        call.enqueue(cb);
-//    }
 
 }

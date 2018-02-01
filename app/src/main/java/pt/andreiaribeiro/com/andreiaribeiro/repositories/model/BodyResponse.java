@@ -4,7 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Result {
+public class BodyResponse<T> {
+
+    @JsonProperty("__type")
+    private String type;
+
+    @JsonProperty("Obj")
+    private T obj;
 
     @JsonProperty("OK")
     private boolean ok;
@@ -16,12 +22,17 @@ public class Result {
     private boolean showMessage;
 
     @JsonProperty("MessageType")
-    private String messageType;
+    private int messageType;
 
-    @JsonProperty("Obj")
-    private Object obj;
+    public BodyResponse() {
+    }
 
-    public Result() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public boolean isOk() {
@@ -48,19 +59,19 @@ public class Result {
         this.showMessage = showMessage;
     }
 
-    public String getMessageType() {
+    public int getMessageType() {
         return messageType;
     }
 
-    public void setMessageType(String messageType) {
+    public void setMessageType(int messageType) {
         this.messageType = messageType;
     }
 
-    public Object getObj() {
+    public T getObj() {
         return obj;
     }
 
-    public void setObj(Object obj) {
+    public void setObj(T obj) {
         this.obj = obj;
     }
 }

@@ -1,20 +1,14 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.webservices;
 
+import okhttp3.RequestBody;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfo;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
-
-/**
- * Created by Rui on 23/10/2017.
- */
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @GET("login")
-    Call<UserAuthInfo> getUser(@Query("type") String type, @Query("email") String strEmail, @Query("password") String strPassword);
-
-//    @GET("users/self/media/recent")
-//    Call<UserMediaRecentResponse> getUserMediaRecent(@Query("access_token") String accessToken);
-
+    @POST("login")
+    Call<BaseResponse<UserAuthInfo>> authenticate(@Body RequestBody requestBody);
 }
