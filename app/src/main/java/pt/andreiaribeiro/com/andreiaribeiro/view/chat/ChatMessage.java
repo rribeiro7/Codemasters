@@ -1,16 +1,16 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.chat;
 
-/**
- * Created by Rui on 23/01/2018.
- */
-
 public class ChatMessage {
-    public boolean left;
+
+    /**
+     * 0 - Received
+     * 1 - Sent
+     */
+    public int direction;
     public String message;
 
-    public ChatMessage(boolean left, String message) {
-        super();
-        this.left = left;
+    public ChatMessage(int direction, String message) {
+        this.direction = direction;
         this.message = message;
     }
 }

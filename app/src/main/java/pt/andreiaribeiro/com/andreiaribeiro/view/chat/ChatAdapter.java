@@ -14,9 +14,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 
 public class ChatAdapter extends ArrayAdapter<ChatMessage> {
 
-    private TextView chatText;
-    private List<ChatMessage> chatMessageList = new ArrayList<ChatMessage>();
-    private Context context;
+    private List<ChatMessage> chatMessageList = new ArrayList<>();
 
     @Override
     public void add(ChatMessage object) {
@@ -24,30 +22,40 @@ public class ChatAdapter extends ArrayAdapter<ChatMessage> {
         super.add(object);
     }
 
-    public ChatAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-        this.context = context;
+    public ChatAdapter(Context context, List<ChatMessage> chatMessageList) {
+        super(context, R.layout.activity_chat);
+        this.chatMessageList = chatMessageList;
     }
 
     public int getCount() {
         return this.chatMessageList.size();
     }
 
-    public ChatMessage getItem(int index) {
-        return this.chatMessageList.get(index);
-    }
-
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ChatMessage chatMessageObj = getItem(position);
-        View row = convertView;
-        LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (chatMessageObj.left) {
-            row = inflater.inflate(R.layout.chat_send, parent, false);
-        }else{
-            row = inflater.inflate(R.layout.chat_receive, parent, false);
+
+        if (chatMessageObj == null) {
+            return convertView;
         }
-        chatText = (TextView) row.findViewById(R.id.msgr);
-        chatText.setText(chatMessageObj.message);
-        return row;
+
+        LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        TextView tvChatMessage;
+        if (chatMessageObj.direction == 1) {
+            convertView = inflater.inflate(R.layout.chat_send, parent, false);
+            tvChatMessage = (TextView) convertView.findViewById(R.id.tv_message_sent);
+        } else {
+            convertView = inflater.inflate(R.layout.chat_receive, parent, false);
+            tvChatMessage = (TextView) convertView.findViewById(R.id.tv_message_received);
+        }
+
+        tvChatMessage.setText(chatMessageObj.message);
+
+        return convertView;
+    }
+
+    @Override
+    public ChatMessage getItem(int position) {
+        return chatMessageList.get(position);
     }
 }
