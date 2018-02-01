@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity(tableName = "user")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class UserModel {
 
     @PrimaryKey
     @JsonProperty("ID")
@@ -35,7 +35,7 @@ public class User {
     @JsonProperty("CreditCard")
     private String creditCard;
 
-    public User() {
+    public UserModel() {
 
     }
 

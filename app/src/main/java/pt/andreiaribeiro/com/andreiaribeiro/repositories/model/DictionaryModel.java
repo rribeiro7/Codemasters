@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dictionary {
+public class DictionaryModel {
 
     @JsonProperty("Language")
     private String language;
 
     @JsonProperty("Keys")
-    private List<KeyValue> keys = new ArrayList<>();
+    private List<KeyValueModel> keys = new ArrayList<>();
 
 
-    public Dictionary() {
+    public DictionaryModel() {
     }
 
     public String getLanguage() {
@@ -27,11 +27,11 @@ public class Dictionary {
         this.language = language;
     }
 
-    public List<KeyValue> getKeys() {
+    public List<KeyValueModel> getKeys() {
         return keys;
     }
 
-    public void setKeys(List<KeyValue> keys) {
+    public void setKeys(List<KeyValueModel> keys) {
         this.keys = keys;
     }
 

@@ -11,14 +11,14 @@ import java.util.List;
 public interface ProfessionalDao {
 
     @Query("SELECT * from professional")
-    List<Professional> getAllProfessionals();
+    List<ProfessionalModel> getAllProfessionals();
 
     @Query("SELECT * FROM professional where id = :id")
-    User getProfessional(int id);
+    UserModel getProfessional(int id);
 
     @Insert
-    void insertProfessional(Professional professional);
+    void insertProfessional(ProfessionalModel professional);
 
     @Delete
-    void deleteProfessional(Professional professional);
+    void deleteProfessional(ProfessionalModel professional);
 }

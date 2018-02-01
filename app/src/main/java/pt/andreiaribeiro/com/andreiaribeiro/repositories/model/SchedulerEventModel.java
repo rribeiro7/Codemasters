@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SchedulerEvent {
+public class SchedulerEventModel {
 
     @JsonProperty("id_schedule")
     private int idSchedule;
@@ -32,7 +32,7 @@ public class SchedulerEvent {
     @JsonProperty("backgroundColor")
     private String backgroundColor;
 
-    public SchedulerEvent() {
+    public SchedulerEventModel() {
 
     }
 

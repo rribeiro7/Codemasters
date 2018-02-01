@@ -11,14 +11,14 @@ import java.util.List;
 public interface UserDao {
 
     @Query("SELECT * from user")
-    List<User> getAllUsers();
+    List<UserModel> getAllUsers();
 
     @Query("SELECT * FROM user where id = :id")
-    User getUser(int id);
+    UserModel getUser(int id);
 
     @Insert
-    void insertUser(User user);
+    void insertUser(UserModel user);
 
     @Delete
-    void deleteUser(User user);
+    void deleteUser(UserModel user);
 }

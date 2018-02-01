@@ -216,7 +216,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
         Log.i("RUI", "Activity: "+ sActivity.getSelectedItem().toString());
         }
         if ( sServices.getSelectedItem()!=null){
-        Log.i("RUI", "Services: "+ sServices.getSelectedItem().toString());
+        Log.i("RUI", "ServicesModel: "+ sServices.getSelectedItem().toString());
         }
         if (txtName.getText() !=null){
         Log.i("RUI", "Nome: "+ txtName.getText().toString());

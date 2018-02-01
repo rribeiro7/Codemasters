@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity(tableName = "services")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Services {
+public class ServicesModel {
 
     @PrimaryKey
     @JsonProperty("ServiceID")
@@ -31,7 +31,7 @@ public class Services {
     @JsonProperty("ActivityName")
     private String activityName;
 
-    public Services() {
+    public ServicesModel() {
     }
 
     public int getId() {

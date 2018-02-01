@@ -13,13 +13,13 @@ import java.util.List;
 
 @Entity(tableName = "professional")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Professional {
+public class ProfessionalModel {
 
     //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
 
     @Ignore
-    @JsonProperty("Services")
-    private List<Services> mServices = new ArrayList<>();
+    @JsonProperty("ServicesModel")
+    private List<ServicesModel> mServices = new ArrayList<>();
 
     @PrimaryKey
     @JsonProperty("Id")
@@ -47,15 +47,15 @@ public class Professional {
 
     @Ignore
     @JsonProperty("GeoOne")
-    private KeyValue geoOne;
+    private KeyValueModel geoOne;
 
     @Ignore
     @JsonProperty("GeoTwo")
-    private KeyValue geoTwo;
+    private KeyValueModel geoTwo;
 
     @Ignore
     @JsonProperty("GeoThree")
-    private KeyValue geoThree;
+    private KeyValueModel geoThree;
 
     // Confidential
     @ColumnInfo(name = "vat")
@@ -129,27 +129,27 @@ public class Professional {
         this.mainPhotoURL = mainPhotoURL;
     }
 
-    public KeyValue getGeoOne() {
+    public KeyValueModel getGeoOne() {
         return geoOne;
     }
 
-    public void setGeoOne(KeyValue geoOne) {
+    public void setGeoOne(KeyValueModel geoOne) {
         this.geoOne = geoOne;
     }
 
-    public KeyValue getGeoTwo() {
+    public KeyValueModel getGeoTwo() {
         return geoTwo;
     }
 
-    public void setGeoTwo(KeyValue geoTwo) {
+    public void setGeoTwo(KeyValueModel geoTwo) {
         this.geoTwo = geoTwo;
     }
 
-    public KeyValue getGeoThree() {
+    public KeyValueModel getGeoThree() {
         return geoThree;
     }
 
-    public void setGeoThree(KeyValue geoThree) {
+    public void setGeoThree(KeyValueModel geoThree) {
         this.geoThree = geoThree;
     }
 

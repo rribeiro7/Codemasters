@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserAuthInfo {
+public class UserAuthInfoModel {
 
     @JsonProperty("UserID")
     private int userId;
@@ -30,7 +30,7 @@ public class UserAuthInfo {
     @JsonProperty("IncompleteProfile_PaymentInfo")
     private boolean incompleteProfilePaymentInfo;
 
-    public UserAuthInfo() {
+    public UserAuthInfoModel() {
     }
 
     public int getUserId() {
