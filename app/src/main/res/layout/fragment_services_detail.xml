@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:textSize="16dp"
-        android:text="NOME PROFISSIONAL" />
+        android:text="" />
 
     <!--ToDo Inserir um flipImage por causa da galeria de fotos-->
     <ImageView
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Medico" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Medicina Geral" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="2001-02-30" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="me@liberiix.com" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Graduado em ciencias" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Descrição do que faço" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -166,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Experiencia em cenas" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -186,7 +186,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Lisboa" />
+            android:text="" />
     </LinearLayout>
 
     <Button

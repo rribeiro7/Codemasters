@@ -68,7 +68,7 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:text="test"/>
+                    android:text="1forrest1"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -80,6 +80,39 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/login_lostpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20px"
+                android:text="@string/forgetpassword"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <Button
+                android:id="@+id/login_goRegister"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/go_to_register"
+                android:background="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/login_termos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autoLink="web"
+                android:gravity="center"
+                android:padding="20px"
+                android:clickable="true"
+                android:linksClickable="true"
+                android:text="@string/termsandconditions"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
     </ScrollView>

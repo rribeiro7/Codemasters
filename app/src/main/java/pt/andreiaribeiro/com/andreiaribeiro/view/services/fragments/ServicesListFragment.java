@@ -1,8 +1,10 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
@@ -17,13 +19,24 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class ServicesListFragment extends Fragment implements RecyclerViewOnItemClickListener.OnItemClickListener {
-
+public class ServicesListFragment extends Fragment implements RecyclerViewOnItemClickListener.OnItemClickListener, Callback<BaseListResponse<SearchProfessionals>> {
 
     RecyclerView rv;
     List<Service> servicesList;
@@ -36,6 +49,8 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_services_list, container, false);
+
+        ServicesListActivity sla = new ServicesListActivity();
 
         servicesList = new ArrayList<>();
         servicesList = getValidServices();
@@ -52,7 +67,9 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(getActivity(), servicesList.get(position).getDescription() + "", Toast.LENGTH_SHORT).show();
+        //LiberiixApplication.getApiRepositoryInstance(getActivity()).listProfessional("", 0,0,"",0,0,0, this);
 
+//para ficar para sempre comentado
 //        ServicesDetailFragment details = new ServicesDetailFragment();
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            details.setSharedElementEnterTransition(new ServicesDetailFragment());
@@ -61,10 +78,11 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
 //            details.setSharedElementReturnTransition(nmew ServicesDetailFragment());
 //        }
 
+
         ImageView serviceImage = (ImageView) view.findViewById(R.id.iv_service_photo) ;
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .addSharedElement(serviceImage, "service_image")
+                //.addSharedElement(serviceImage, "service_image")
                 .replace(R.id.container_services, new ServicesDetailFragment(), ServicesDetailFragment.class.getSimpleName())
                 .addToBackStack(ServicesDetailFragment.class.getSimpleName())
                 .commit();
@@ -96,6 +114,22 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
                 "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1HAAAAJDQzYmQ4YzY2LWI0MzctNDIxYS05Y2ZiLWNkY2JiZGZjNTgzNg.jpg"));
 
         return servicesList;
+    }
+
+
+    @Override
+    public void onResponse(@NonNull Call<BaseListResponse<SearchProfessionals>> call, @NonNull Response<BaseListResponse<SearchProfessionals>> response) {
+        if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
+                && response.body().getBodyResponse().getObj() != null) {
+            Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(@NonNull Call<BaseListResponse<SearchProfessionals>> call, Throwable t) {
+        Toast.makeText(getActivity(), "ERRO NO DOWNLOAD", Toast.LENGTH_SHORT).show();
     }
 
 }

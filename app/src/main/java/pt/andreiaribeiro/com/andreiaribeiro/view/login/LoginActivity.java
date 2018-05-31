@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.view.register.RegisterActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private AutoCompleteTextView txtEmail;
     private EditText txtPassword;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +39,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtPassword = (EditText) findViewById(R.id.text_password);
         btnLogin = (Button) findViewById(R.id.email_sign_in_button);
         btnLogin.setOnClickListener(this);
+        btnRegister = (Button) findViewById(R.id.login_goRegister);
+        btnRegister.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if (isLoginValid(txtEmail.getText().toString(), txtPassword.getText().toString())) {
-            LiberiixApplication.getApiRepositoryInstance(this).authenticate(txtEmail.getText().toString(), txtPassword.getText().toString(), this);
-        } else {
-            Toast.makeText(this, "Please fill both username and password fields!", Toast.LENGTH_SHORT).show();
+        switch (v.getId() /*to get clicked view id**/) {
+            case R.id.email_sign_in_button:
+                if (isLoginValid(txtEmail.getText().toString(), txtPassword.getText().toString())) {
+                    LiberiixApplication.getApiRepositoryInstance(this).authenticate(txtEmail.getText().toString(), txtPassword.getText().toString(), this);
+                } else {
+                    Toast.makeText(this, "Please fill both username and password fields!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.login_goRegister:
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+            default: break;
         }
+
     }
 
     @Override

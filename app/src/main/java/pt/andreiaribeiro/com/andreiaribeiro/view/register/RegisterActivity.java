@@ -1,20 +1,29 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.StringUtils;
+import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Rui on 01/12/2017.
  */
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements Callback<BaseResponse<UserModel>> {
 
     private EditText txtName, txtEmail, txtPassword, txtConfirmPassword;
     private Button btnLogin;
@@ -44,24 +53,32 @@ public class RegisterActivity extends AppCompatActivity {
         if ( StringUtils.isNullOrEmpty(txtName.getText().toString()) &&
                 StringUtils.isNullOrEmpty(txtEmail.getText().toString()) &&
                 StringUtils.isNullOrEmpty(txtPassword.getText().toString()) &&
-                StringUtils.isNullOrEmpty(txtConfirmPassword.getText().toString())){
-                    return true;
+                StringUtils.isNullOrEmpty(txtConfirmPassword.getText().toString()) &&
+                ! (txtConfirmPassword.getText().toString().equals(txtPassword.getText().toString()))
+                ){
+                    return false;
         }else{
-            return false;
+            return true;
         }
     }
 
     private void saveInfo() {
-        UserModel user = new UserModel();
-        user.setName(txtName.getText().toString());
-        user.setEmail(txtEmail.getText().toString());
-        //TODO falta password
-//        "type": "pro",
-//                "name": "user",
-//                "email": "teste@test.com",
-//                "password": "teste",
-//                "confirmpass": "teste",
-//                "lang":"en"
+        LiberiixApplication.getApiRepositoryInstance(this).registerUser("user", txtName.getText().toString(), txtEmail.getText().toString(),
+                txtPassword.getText().toString(), txtConfirmPassword.getText().toString(), "en", this);
+    }
 
+    @Override
+    public void onResponse(Call<BaseResponse<UserModel>> call, Response<BaseResponse<UserModel>> response) {
+        if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
+                && response.body().getBodyResponse().getObj() != null) {
+            Toast.makeText(this, "Register with success.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "There was an error with the Register. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(Call<BaseResponse<UserModel>> call, Throwable t) {
+        Toast.makeText(this, "There was an error with the Register. Please try again.", Toast.LENGTH_SHORT).show();
     }
 }

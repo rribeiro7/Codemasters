@@ -13,12 +13,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.mocks.ObjSpinner;
 import pt.andreiaribeiro.com.andreiaribeiro.mocks.FiltersMock;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 
 /**
  * TODO:
@@ -37,7 +46,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
     Spinner sDistrict;
     Spinner sCouncil;
     private AutoCompleteTextView txtGeneric;
-    private EditText txtName, txtEmail;
+    private EditText txtName;
 
     ObjSpinner objSActivity;
     ObjSpinner objSServices;
@@ -60,6 +69,13 @@ public class ServicesFilterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 saveFilters();
                 Intent intent = new Intent(ServicesFilterActivity.this, ServicesListActivity.class);
+                intent.putExtra(Constants.FILTER_GENERIC, txtGeneric.getText().toString());
+                intent.putExtra(Constants.FILTER_NAME, txtName.getText().toString());
+                intent.putExtra(Constants.FILTER_ACTIVITY, sActivity.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_SERVICE, sServices.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_COUNTRY, sCountry.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_DISTRICT, sDistrict.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_COUNCIL, sCouncil.getSelectedItemId());
                 startActivity(intent);
             }
         });
@@ -68,7 +84,6 @@ public class ServicesFilterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 txtGeneric.setText("");
                 txtName.setText("");
-                txtEmail.setText("");
                 sActivity.setSelection(0);
                 sServices.setSelection(0);
                 sCountry.setSelection(0);
@@ -81,7 +96,6 @@ public class ServicesFilterActivity extends AppCompatActivity {
     private void setLayout() {
         txtGeneric = (AutoCompleteTextView) findViewById(R.id.filter_genericsearch);
         txtName = (EditText) findViewById(R.id.filter_name);
-        txtEmail = (EditText) findViewById(R.id.filter_email);
         btnServices = (Button) findViewById(R.id.filter_btnSearch);
         btnClean = (Button) findViewById(R.id.filter_btnClean);
         sActivity = (Spinner) findViewById(R.id.filter_activity);
@@ -92,8 +106,27 @@ public class ServicesFilterActivity extends AppCompatActivity {
     }
 
     private void loadSpinnerActivity(){
+        List<ObjSpinner> spinnerArray =  new ArrayList<ObjSpinner>();
+        spinnerArray.add(new ObjSpinner(-1, "---"));
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("d");
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                int key_value = Integer.parseInt(jo_inside.getString("Key"));
+                String value_value = jo_inside.getString("Value");
+
+                spinnerArray.add(new ObjSpinner(key_value, value_value));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
-                this, android.R.layout.simple_spinner_item, FiltersMock.fillActivities());
+                this, android.R.layout.simple_spinner_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -208,6 +241,24 @@ public class ServicesFilterActivity extends AppCompatActivity {
         });
     }
 
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = this.getAssets().open("activity.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+
+
     private void saveFilters(){
         if ( txtGeneric.getText()!=null){
         Log.i("RUI", "Generic: "+ txtGeneric.getText().toString());
@@ -220,9 +271,6 @@ public class ServicesFilterActivity extends AppCompatActivity {
         }
         if (txtName.getText() !=null){
         Log.i("RUI", "Nome: "+ txtName.getText().toString());
-        }
-        if ( txtEmail.getText()!=null){
-        Log.i("RUI", "Email: "+ txtEmail.getText().toString());
         }
         if (  sCountry.getSelectedItem()!=null){
         Log.i("RUI", "Country: "+ sCountry.getSelectedItem().toString());
