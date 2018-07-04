@@ -34,9 +34,6 @@ import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
  * 1- Enable or disabled dos spinners por causa da dependencia
  * 2- Garantir que limpam os spinners caso se mude o item do spinner de hierarquia superior
  */
-
-
-
 public class ServicesFilterActivity extends AppCompatActivity {
 
     Button btnServices, btnClean;

@@ -2,7 +2,9 @@ package pt.andreiaribeiro.com.andreiaribeiro.repositories.webservices;
 
 import okhttp3.RequestBody;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
@@ -20,8 +22,11 @@ public interface ApiService {
     Call<BaseListResponse<SearchProfessionals>> listProfessional(@Body RequestBody requestBody);
 
     @POST("ProfessionalWS.asmx/GetProfessionalDetails")
-    Call<BaseResponse<SearchProfessionals>> detailProfessional(@Body RequestBody requestBody);
+    Call<BaseProfissional> detailProfessional(@Body RequestBody requestBody);
 
     @POST("AuthWS.asmx/Register")
     Call<BaseResponse<UserModel>> registerUser(@Body RequestBody requestBody);
+
+    @POST("MessageWs.asmx/GetAllMessages")
+    Call<BaseListResponse<MessagesModel>>getAllMessages(@Body RequestBody requestBody);
 }

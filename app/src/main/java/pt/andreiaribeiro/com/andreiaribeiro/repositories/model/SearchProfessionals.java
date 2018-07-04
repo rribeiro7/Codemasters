@@ -18,6 +18,9 @@ public class SearchProfessionals {
     @JsonProperty("Birthdate")
     private String birthdate;
 
+    @JsonProperty("MainPhoto")
+    private String mainPhoto;
+
     public SearchProfessionals() {
     }
 
@@ -51,5 +54,14 @@ public class SearchProfessionals {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+
+    public String getMainPhoto() {
+        return mainPhoto;
+    }
+
+    public void setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
     }
 }

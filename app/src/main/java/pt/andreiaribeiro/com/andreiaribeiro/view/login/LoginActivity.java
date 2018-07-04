@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.register.RegisterActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 import retrofit2.Call;
@@ -28,6 +32,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AutoCompleteTextView txtEmail;
     private EditText txtPassword;
     private Button btnLogin, btnRegister;
+    private RadioGroup radioType;
+    private RadioButton radioButton;
+    private RadioButton radioUserLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +48,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnRegister = (Button) findViewById(R.id.login_goRegister);
         btnRegister.setOnClickListener(this);
-
+        radioType = (RadioGroup) findViewById(R.id.radio_login_type);
+        radioUserLogin = (RadioButton) findViewById(R.id.radioUser);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId() /*to get clicked view id**/) {
+        int selectedId = radioType.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(selectedId);
+
+        switch (v.getId()) {
             case R.id.email_sign_in_button:
                 if (isLoginValid(txtEmail.getText().toString(), txtPassword.getText().toString())) {
-                    LiberiixApplication.getApiRepositoryInstance(this).authenticate(txtEmail.getText().toString(), txtPassword.getText().toString(), this);
+                    LiberiixApplication.getApiRepositoryInstance(this).authenticate(radioButton.getTag().toString(), txtEmail.getText().toString(), txtPassword.getText().toString(), this);
                 } else {
                     Toast.makeText(this, "Please fill both username and password fields!", Toast.LENGTH_SHORT).show();
                 }
@@ -57,7 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.login_goRegister:
                 Intent intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
-            default: break;
+            default:
+                break;
         }
 
     }
@@ -67,9 +79,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
                 && response.body().getBodyResponse().getObj() != null) {
             Toast.makeText(this, "Login with success.", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(this, ServicesFilterActivity.class);
-            startActivity(intent);
+            if (radioUserLogin.isChecked()) {
+                Intent intent = new Intent(this, ServicesFilterActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, MessageListActivity.class);
+                startActivity(intent);
+            }
         } else {
             Toast.makeText(this, "There was an error with the Login. Please try again.", Toast.LENGTH_SHORT).show();
         }

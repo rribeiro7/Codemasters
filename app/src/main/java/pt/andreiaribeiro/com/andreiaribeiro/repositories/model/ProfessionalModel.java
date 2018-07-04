@@ -17,12 +17,8 @@ public class ProfessionalModel {
 
     //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
 
-    @Ignore
-    @JsonProperty("ServicesModel")
-    private List<ServicesModel> mServices = new ArrayList<>();
-
     @PrimaryKey
-    @JsonProperty("Id")
+    @JsonProperty("ID")
     private int id;
 
     @ColumnInfo(name = "name")
@@ -37,14 +33,16 @@ public class ProfessionalModel {
     @JsonProperty("Birthdate")
     private String birthdate;
 
-    @ColumnInfo(name = "email")
-    @JsonProperty("Email")
-    private String email;
+    @JsonProperty("Formation")
+    private String formation;
 
-    @ColumnInfo(name = "main_photo_url")
-    @JsonProperty("MainPhotoURL")
-    private String mainPhotoURL;
+    @JsonProperty("Video")
+    private String video;
 
+    @ColumnInfo(name = "main_photo")
+    @JsonProperty("MainPhoto")
+    private String mainPhoto;
+/*
     @Ignore
     @JsonProperty("GeoOne")
     private KeyValueModel geoOne;
@@ -56,6 +54,10 @@ public class ProfessionalModel {
     @Ignore
     @JsonProperty("GeoThree")
     private KeyValueModel geoThree;
+
+    @Ignore
+    @JsonProperty("ServicesModel")
+    private List<ServicesModel> mServices = new ArrayList<>();
 
     // Confidential
     @ColumnInfo(name = "vat")
@@ -77,7 +79,7 @@ public class ProfessionalModel {
     @ColumnInfo(name = "experience")
     @JsonProperty("Experience")
     private int experience;
-
+*/
     public void Profissional() {
     }
 
@@ -113,22 +115,23 @@ public class ProfessionalModel {
         this.birthdate = birthdate;
     }
 
-    public String getEmail() {
-        return email;
+
+    public String getMainPhoto() {
+        return mainPhoto;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
     }
 
-    public String getMainPhotoURL() {
-        return mainPhotoURL;
+    public String getVideo() {
+        return video;
     }
 
-    public void setMainPhotoURL(String mainPhotoURL) {
-        this.mainPhotoURL = mainPhotoURL;
+    public void setVideo(String video) {
+        this.video = video;
     }
-
+/*
     public KeyValueModel getGeoOne() {
         return geoOne;
     }
@@ -152,22 +155,7 @@ public class ProfessionalModel {
     public void setGeoThree(KeyValueModel geoThree) {
         this.geoThree = geoThree;
     }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
+*/
 
     public String getFormation() {
         return formation;
@@ -177,19 +165,4 @@ public class ProfessionalModel {
         this.formation = formation;
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
 }

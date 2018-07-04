@@ -17,7 +17,7 @@ public class BodyListResponse<T> {
     @JsonProperty("OK")
     private boolean ok;
 
-    @JsonProperty("Message")
+    @JsonProperty("Messages")
     private String message;
 
     @JsonProperty("ShowMessage")
