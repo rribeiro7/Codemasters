@@ -9,7 +9,7 @@ import java.util.List;
 
 @Dao
 public interface ProfessionalDao {
-
+/*
     @Query("SELECT * from professional")
     List<ProfessionalModel> getAllProfessionals();
 
@@ -20,5 +20,5 @@ public interface ProfessionalDao {
     void insertProfessional(ProfessionalModel professional);
 
     @Delete
-    void deleteProfessional(ProfessionalModel professional);
+    void deleteProfessional(ProfessionalModel professional);*/
 }

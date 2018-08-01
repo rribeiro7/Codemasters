@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
 {
     RecyclerView rv;
     List<SearchProfessionals> servicesList;
-    LinearLayout linlaHeaderProgress;
+    RelativeLayout linlaHeaderProgress;
     ServicesAdapter servicesAdapter;
 
     public ServicesListFragment() {
@@ -40,7 +41,7 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_services_list, container, false);
-        linlaHeaderProgress = (LinearLayout) view.findViewById(R.id.linlaHeaderProgress);
+        linlaHeaderProgress = (RelativeLayout) view.findViewById(R.id.linlaHeaderProgress);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
         LiberiixApplication.getApiRepositoryInstance(this.getActivity()).listProfessional("", 0,0,"",0,0,0, this);
 /*        LiberiixApplication.getApiRepositoryInstance(getActivity()).listProfessional("", 0,

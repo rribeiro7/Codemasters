@@ -50,6 +50,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnRegister.setOnClickListener(this);
         radioType = (RadioGroup) findViewById(R.id.radio_login_type);
         radioUserLogin = (RadioButton) findViewById(R.id.radioUser);
+        professionalLogin();
+    }
+
+    private void professionalLogin() {
+        txtEmail.setText("lineuanacletocasqueira@liberiix.com");
+        radioType.check(R.id.radioPro);
     }
 
     @Override

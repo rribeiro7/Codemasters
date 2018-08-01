@@ -26,6 +26,7 @@
         <activity android:name=".view.services.activities.ServicesFilterActivity" />
         <activity android:name=".view.chat.ChatActivity" />
         <activity android:name=".view.chat.MessageListActivity" />
+        <activity android:name=".view.schedule.ScheduleActivity" />
     </application>
 
 </manifest>

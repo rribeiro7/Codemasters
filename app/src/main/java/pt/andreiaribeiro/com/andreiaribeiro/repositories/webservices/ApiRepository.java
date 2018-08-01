@@ -87,7 +87,7 @@ public class ApiRepository {
 
     public void getAllMessages(@NonNull Callback<BaseListResponse<MessagesModel>> cb){
         MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
-        RequestBody requestBody = RequestBody.create(mediaType, "{}");
+        RequestBody requestBody = RequestBody.create(mediaType, "");
         Call<BaseListResponse<MessagesModel>> call = service.getAllMessages(requestBody);
         call.enqueue(cb);
     }

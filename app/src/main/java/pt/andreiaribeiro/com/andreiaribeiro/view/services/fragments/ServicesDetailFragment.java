@@ -88,7 +88,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         txtDateBirth.setText(prof.getBirthdate());
         txtDescription.setText(prof.getDescription());
         txtFormation.setText(prof.getFormation());
-        txtActivity.setText("");
+        //txtActivity.setText(prof.getDistinctActivity().get(0));
         txtService.setText("");
     }
 

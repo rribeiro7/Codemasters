@@ -11,6 +11,8 @@ import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -28,5 +30,5 @@ public interface ApiService {
     Call<BaseResponse<UserModel>> registerUser(@Body RequestBody requestBody);
 
     @POST("MessageWs.asmx/GetAllMessages")
-    Call<BaseListResponse<MessagesModel>>getAllMessages(@Body RequestBody requestBody);
+    Call<BaseListResponse<MessagesModel>> getAllMessages(@Body RequestBody requestBody);
 }

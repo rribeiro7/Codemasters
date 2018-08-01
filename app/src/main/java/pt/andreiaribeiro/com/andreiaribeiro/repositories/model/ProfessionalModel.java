@@ -21,65 +21,51 @@ public class ProfessionalModel {
     @JsonProperty("ID")
     private int id;
 
-    @ColumnInfo(name = "name")
     @JsonProperty("Name")
     private String name;
 
-    @ColumnInfo(name = "description")
     @JsonProperty("Description")
     private String description;
 
-    @ColumnInfo(name = "birth_date")
     @JsonProperty("Birthdate")
     private String birthdate;
 
     @JsonProperty("Formation")
     private String formation;
 
+    @JsonProperty("Experience")
+    private String experience;
+
+    @JsonProperty("Tags")
+    private String tags;
+
+    @JsonProperty("CustomTags")
+    private String customTags;
+
     @JsonProperty("Video")
     private String video;
 
-    @ColumnInfo(name = "main_photo")
+    @JsonProperty("DistinctActivities")
+    private List<String> distinctActivities;
+
+    @JsonProperty("Service")
+    private List<ServicesModel> services;
+
+    @JsonProperty("AvgPrice")
+    private String avgPrice;
+
+    //@JsonProperty("Geos")
+    //private List<Geos> geos;
+
     @JsonProperty("MainPhoto")
     private String mainPhoto;
-/*
-    @Ignore
-    @JsonProperty("GeoOne")
-    private KeyValueModel geoOne;
 
-    @Ignore
-    @JsonProperty("GeoTwo")
-    private KeyValueModel geoTwo;
+    @JsonProperty("MainPhotoURL")
+    private String mainPhotoURL;
 
-    @Ignore
-    @JsonProperty("GeoThree")
-    private KeyValueModel geoThree;
+    @JsonProperty("OtherPhotos")
+    private List<String> otherPhotos;
 
-    @Ignore
-    @JsonProperty("ServicesModel")
-    private List<ServicesModel> mServices = new ArrayList<>();
-
-    // Confidential
-    @ColumnInfo(name = "vat")
-    @JsonProperty("VAT")
-    private String vat;
-
-    @ColumnInfo(name = "iban")
-    @JsonProperty("IBAN")
-    private String iban;
-
-    @ColumnInfo(name = "formation")
-    @JsonProperty("Formation")
-    private String formation;
-
-    @ColumnInfo(name = "cedula")
-    @JsonProperty("Cedula")
-    private String cedula;
-
-    @ColumnInfo(name = "experience")
-    @JsonProperty("Experience")
-    private int experience;
-*/
     public void Profissional() {
     }
 
@@ -115,13 +101,36 @@ public class ProfessionalModel {
         this.birthdate = birthdate;
     }
 
-
-    public String getMainPhoto() {
-        return mainPhoto;
+    public String getFormation() {
+        return formation;
     }
 
-    public void setMainPhoto(String mainPhoto) {
-        this.mainPhoto = mainPhoto;
+    public void setFormation(String formation) {
+        this.formation = formation;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getCustomTags() {
+        return customTags;
+    }
+
+    public void setCustomTags(String customTags) {
+        this.customTags = customTags;
     }
 
     public String getVideo() {
@@ -131,38 +140,52 @@ public class ProfessionalModel {
     public void setVideo(String video) {
         this.video = video;
     }
-/*
-    public KeyValueModel getGeoOne() {
-        return geoOne;
+
+    public List<String> getDistinctActivities() {
+        return distinctActivities;
     }
 
-    public void setGeoOne(KeyValueModel geoOne) {
-        this.geoOne = geoOne;
+    public void setDistinctActivities(List<String> distinctActivities) {
+        this.distinctActivities = distinctActivities;
     }
 
-    public KeyValueModel getGeoTwo() {
-        return geoTwo;
+    public List<ServicesModel> getServices() {
+        return services;
     }
 
-    public void setGeoTwo(KeyValueModel geoTwo) {
-        this.geoTwo = geoTwo;
+    public void setServices(List<ServicesModel> services) {
+        this.services = services;
     }
 
-    public KeyValueModel getGeoThree() {
-        return geoThree;
+    public String getAvgPrice() {
+        return avgPrice;
     }
 
-    public void setGeoThree(KeyValueModel geoThree) {
-        this.geoThree = geoThree;
-    }
-*/
-
-    public String getFormation() {
-        return formation;
+    public void setAvgPrice(String avgPrice) {
+        this.avgPrice = avgPrice;
     }
 
-    public void setFormation(String formation) {
-        this.formation = formation;
+    public String getMainPhoto() {
+        return mainPhoto;
     }
 
+    public void setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
+    }
+
+    public String getMainPhotoURL() {
+        return mainPhotoURL;
+    }
+
+    public void setMainPhotoURL(String mainPhotoURL) {
+        this.mainPhotoURL = mainPhotoURL;
+    }
+
+    public List<String> getOtherPhotos() {
+        return otherPhotos;
+    }
+
+    public void setOtherPhotos(List<String> otherPhotos) {
+        this.otherPhotos = otherPhotos;
+    }
 }

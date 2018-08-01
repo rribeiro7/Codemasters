@@ -9,7 +9,7 @@ import java.util.List;
 
 @Dao
 public interface ServicesDao {
-
+/*
     @Query("SELECT * from services")
     List<ServicesModel> getAllServices();
 
@@ -20,5 +20,5 @@ public interface ServicesDao {
     void insertService(ServicesModel services);
 
     @Delete
-    void deleteService(ServicesModel services);
+    void deleteService(ServicesModel services);*/
 }

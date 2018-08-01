@@ -13,19 +13,19 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-
+/*
 import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalFuturePaymentActivity;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.paypal.android.sdk.payments.PaymentConfirmation;*/
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 
 public class PaymentsActivity extends AppCompatActivity {
-
+/*
     PayPalConfiguration m_configuration;
     String m_paypalClientId = "string_client_id";
     Intent m_service;
@@ -66,6 +66,15 @@ public class PaymentsActivity extends AppCompatActivity {
             }
         }
     }
+*/
+
+
+    //
+    //
+    // COMMENTS CODE BELOW
+    //
+    //
+
 
 
     // private static final String TAG = "paymentdemoblog";

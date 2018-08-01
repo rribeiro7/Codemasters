@@ -1,5 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories;
-
+/*
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
@@ -36,4 +36,4 @@ public abstract class LiberiixDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
 
-}
+}*/

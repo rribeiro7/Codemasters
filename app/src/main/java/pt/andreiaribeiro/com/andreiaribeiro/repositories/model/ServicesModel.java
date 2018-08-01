@@ -7,7 +7,6 @@ import android.arch.persistence.room.PrimaryKey;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity(tableName = "services")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServicesModel {
 
@@ -15,19 +14,15 @@ public class ServicesModel {
     @JsonProperty("ServiceID")
     private int id;
 
-    @ColumnInfo(name = "name")
     @JsonProperty("ServiceName")
     private String serviceName;
 
-    @ColumnInfo(name = "price")
     @JsonProperty("Price")
     private double price;
 
-    @ColumnInfo(name = "activity_id")
     @JsonProperty("ActivityID")
     private int activityID;
 
-    @ColumnInfo(name = "activity_name")
     @JsonProperty("ActivityName")
     private String activityName;
 
