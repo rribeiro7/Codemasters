@@ -8,18 +8,29 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments.ServicesListFragment;
 
 public class ServicesListActivity extends AppCompatActivity{ //implements View.OnClickListener {
 
-
+String generic="";
+String name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services_list);
 
-        Toast.makeText(this, "Welcome to the services screen.", Toast.LENGTH_SHORT).show();
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                generic = "";
+                name="";
+            } else {
+                generic= extras.getString(Constants.FILTER_GENERIC);
+                name=extras.getString(Constants.FILTER_NAME);
+            }
+        }
 
         getSupportFragmentManager()
                 .beginTransaction()

@@ -12,7 +12,7 @@ public class LiberiixApplication extends Application {
     public static ApiRepository getApiRepositoryInstance(Context context) {
         if (API_REPOSITORY_INSTANCE == null) {
             API_REPOSITORY_INSTANCE =
-                    new ApiRepository("http://liberiix.com/webservices/AuthWS.asmx/");
+                    new ApiRepository("http://liberiix.com/webservices/");
         }
         return API_REPOSITORY_INSTANCE;
     }

@@ -3,14 +3,16 @@ package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BodyResponse<T> {
+public class BodyListResponse<T> {
 
     @JsonProperty("__type")
     private String type;
 
     @JsonProperty("Obj")
-    private T obj;
+    private List<T> obj;
 
     @JsonProperty("OK")
     private boolean ok;
@@ -24,7 +26,7 @@ public class BodyResponse<T> {
     @JsonProperty("MessageType")
     private int messageType;
 
-    public BodyResponse() {
+    public BodyListResponse() {
     }
 
     public String getType() {
@@ -67,11 +69,11 @@ public class BodyResponse<T> {
         this.messageType = messageType;
     }
 
-    public T getObj() {
+    public List<T> getObj() {
         return obj;
     }
 
-    public void setObj(T obj) {
+    public void setObj(List<T> obj) {
         this.obj = obj;
     }
 }

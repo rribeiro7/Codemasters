@@ -11,19 +11,31 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
-public class ServicesDetailFragment extends Fragment {
+public class ServicesDetailFragment extends Fragment implements Callback<BaseProfissional> {
 
     private TextView txtTitle, txtActivity, txtDateBirth, txtDescription, txtEmail, txtExperience, txtFormation, txtLocation, txtService;
     private Button btnSchedule, btnMessage;
+    ImageView serviceDetailPhoto;
 
     public ServicesDetailFragment() {
     }
@@ -33,9 +45,8 @@ public class ServicesDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_services_detail, container, false);
 
-        ImageView serviceDetailPhoto = (ImageView) view.findViewById(R.id.iv_service_image_detail);
-        Picasso.with(getActivity()).load("http://casavivaobras.pt/foto-especialidade/canalizacao/trabalhos-de-canalizacao-022.jpg").into(serviceDetailPhoto);
         setLayout(view);
+        LiberiixApplication.getApiRepositoryInstance(getActivity()).detailProfessional(1, this);
 
         btnSchedule.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +67,7 @@ public class ServicesDetailFragment extends Fragment {
     }
 
     private void setLayout(View view){
+        serviceDetailPhoto = (ImageView) view.findViewById(R.id.iv_service_image_detail);
         txtTitle = (TextView)view.findViewById(R.id.details_txtTitle);
         txtActivity = (TextView)view.findViewById(R.id.details_txtActivity);
         txtDateBirth = (TextView)view.findViewById(R.id.details_txtDateBirth);
@@ -70,15 +82,28 @@ public class ServicesDetailFragment extends Fragment {
     }
 
     private void loadData(ProfessionalModel prof){
+        Picasso.with(getActivity()).load(Constants.BASE_PHOTO + prof.getMainPhoto()).into(serviceDetailPhoto);
+
         txtTitle.setText(prof.getName());
         txtDateBirth.setText(prof.getBirthdate());
         txtDescription.setText(prof.getDescription());
-        txtEmail.setText(prof.getEmail());
-        txtExperience.setText(prof.getExperience());
         txtFormation.setText(prof.getFormation());
-        txtLocation.setText(prof.getGeoThree().getValue());
-
-        txtActivity.setText("");
+        //txtActivity.setText(prof.getDistinctActivity().get(0));
         txtService.setText("");
+    }
+
+    @Override
+    public void onResponse(Call<BaseProfissional> call, Response<BaseProfissional> response) {
+        if (response.body() != null && response.errorBody() == null && response.body().getProfessionalModel() != null) {
+            Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
+            loadData(response.body().getProfessionalModel());
+        } else {
+            Toast.makeText(getActivity(), "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(Call<BaseProfissional> call, Throwable t) {
+        Toast.makeText(getActivity(), "ERRO NO DOWNLOAD", Toast.LENGTH_SHORT).show();
     }
 }

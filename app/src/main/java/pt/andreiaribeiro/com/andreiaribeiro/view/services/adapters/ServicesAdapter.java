@@ -14,14 +14,16 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServicesViewHolder> {
 
     private Context context;
-    private List<Service> servicesList;
+    private List<SearchProfessionals> servicesList;
 
-    public ServicesAdapter(Context context, List<Service> serviceList) {
+    public ServicesAdapter(Context context, List<SearchProfessionals> serviceList) {
         this.context = context;
         this.servicesList = serviceList;
     }
@@ -36,14 +38,19 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @Override
     public void onBindViewHolder(ServicesAdapter.ServicesViewHolder holder, int position) {
         holder.description.setText(servicesList.get(position).getDescription());
-        holder.professional.setText(servicesList.get(position).getProfessional());
-        holder.date.setText(servicesList.get(position).getDate());
-        Picasso.with(context).load(servicesList.get(position).getImage()).into(holder.photo);
+        holder.professional.setText(servicesList.get(position).getName());
+        holder.date.setText(servicesList.get(position).getBirthdate());
+        Picasso.with(context).load(Constants.BASE_PHOTO + servicesList.get(position).getMainPhoto()).into(holder.photo);
     }
 
     @Override
     public int getItemCount() {
-        return servicesList.size();
+        int size =0;
+        if (servicesList!=null)
+        {
+            size=servicesList.size();
+        }
+        return size;
     }
 
     static class ServicesViewHolder extends RecyclerView.ViewHolder {

@@ -17,66 +17,54 @@ public class ProfessionalModel {
 
     //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
 
-    @Ignore
-    @JsonProperty("ServicesModel")
-    private List<ServicesModel> mServices = new ArrayList<>();
-
     @PrimaryKey
-    @JsonProperty("Id")
+    @JsonProperty("ID")
     private int id;
 
-    @ColumnInfo(name = "name")
     @JsonProperty("Name")
     private String name;
 
-    @ColumnInfo(name = "description")
     @JsonProperty("Description")
     private String description;
 
-    @ColumnInfo(name = "birth_date")
     @JsonProperty("Birthdate")
     private String birthdate;
 
-    @ColumnInfo(name = "email")
-    @JsonProperty("Email")
-    private String email;
-
-    @ColumnInfo(name = "main_photo_url")
-    @JsonProperty("MainPhotoURL")
-    private String mainPhotoURL;
-
-    @Ignore
-    @JsonProperty("GeoOne")
-    private KeyValueModel geoOne;
-
-    @Ignore
-    @JsonProperty("GeoTwo")
-    private KeyValueModel geoTwo;
-
-    @Ignore
-    @JsonProperty("GeoThree")
-    private KeyValueModel geoThree;
-
-    // Confidential
-    @ColumnInfo(name = "vat")
-    @JsonProperty("VAT")
-    private String vat;
-
-    @ColumnInfo(name = "iban")
-    @JsonProperty("IBAN")
-    private String iban;
-
-    @ColumnInfo(name = "formation")
     @JsonProperty("Formation")
     private String formation;
 
-    @ColumnInfo(name = "cedula")
-    @JsonProperty("Cedula")
-    private String cedula;
-
-    @ColumnInfo(name = "experience")
     @JsonProperty("Experience")
-    private int experience;
+    private String experience;
+
+    @JsonProperty("Tags")
+    private String tags;
+
+    @JsonProperty("CustomTags")
+    private String customTags;
+
+    @JsonProperty("Video")
+    private String video;
+
+    @JsonProperty("DistinctActivities")
+    private List<String> distinctActivities;
+
+    @JsonProperty("Service")
+    private List<ServicesModel> services;
+
+    @JsonProperty("AvgPrice")
+    private String avgPrice;
+
+    //@JsonProperty("Geos")
+    //private List<Geos> geos;
+
+    @JsonProperty("MainPhoto")
+    private String mainPhoto;
+
+    @JsonProperty("MainPhotoURL")
+    private String mainPhotoURL;
+
+    @JsonProperty("OtherPhotos")
+    private List<String> otherPhotos;
 
     public void Profissional() {
     }
@@ -113,12 +101,76 @@ public class ProfessionalModel {
         this.birthdate = birthdate;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFormation() {
+        return formation;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFormation(String formation) {
+        this.formation = formation;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getCustomTags() {
+        return customTags;
+    }
+
+    public void setCustomTags(String customTags) {
+        this.customTags = customTags;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public List<String> getDistinctActivities() {
+        return distinctActivities;
+    }
+
+    public void setDistinctActivities(List<String> distinctActivities) {
+        this.distinctActivities = distinctActivities;
+    }
+
+    public List<ServicesModel> getServices() {
+        return services;
+    }
+
+    public void setServices(List<ServicesModel> services) {
+        this.services = services;
+    }
+
+    public String getAvgPrice() {
+        return avgPrice;
+    }
+
+    public void setAvgPrice(String avgPrice) {
+        this.avgPrice = avgPrice;
+    }
+
+    public String getMainPhoto() {
+        return mainPhoto;
+    }
+
+    public void setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
     }
 
     public String getMainPhotoURL() {
@@ -129,67 +181,11 @@ public class ProfessionalModel {
         this.mainPhotoURL = mainPhotoURL;
     }
 
-    public KeyValueModel getGeoOne() {
-        return geoOne;
+    public List<String> getOtherPhotos() {
+        return otherPhotos;
     }
 
-    public void setGeoOne(KeyValueModel geoOne) {
-        this.geoOne = geoOne;
-    }
-
-    public KeyValueModel getGeoTwo() {
-        return geoTwo;
-    }
-
-    public void setGeoTwo(KeyValueModel geoTwo) {
-        this.geoTwo = geoTwo;
-    }
-
-    public KeyValueModel getGeoThree() {
-        return geoThree;
-    }
-
-    public void setGeoThree(KeyValueModel geoThree) {
-        this.geoThree = geoThree;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public String getFormation() {
-        return formation;
-    }
-
-    public void setFormation(String formation) {
-        this.formation = formation;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public void setOtherPhotos(List<String> otherPhotos) {
+        this.otherPhotos = otherPhotos;
     }
 }
