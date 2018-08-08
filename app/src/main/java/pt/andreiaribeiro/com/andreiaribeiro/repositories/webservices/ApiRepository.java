@@ -85,10 +85,10 @@ public class ApiRepository {
         call.enqueue(cb);
     }
 
-    public void getAllMessages(@NonNull Callback<BaseListResponse<MessagesModel>> cb){
+    public void getAllMessages(String cookie, @NonNull Callback<BaseListResponse<MessagesModel>> cb){
         MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
         RequestBody requestBody = RequestBody.create(mediaType, "");
-        Call<BaseListResponse<MessagesModel>> call = service.getAllMessages(requestBody);
+        Call<BaseListResponse<MessagesModel>> call = service.getAllMessages(cookie, requestBody);
         call.enqueue(cb);
     }
 

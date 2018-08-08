@@ -21,10 +21,9 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.PreferencesUtils;
 import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageObj;
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.Messages;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.adapters.MessagesAdapter;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
@@ -38,7 +37,7 @@ import retrofit2.Response;
 public class MessageListFragment extends Fragment implements RecyclerViewOnItemClickListener.OnItemClickListener, Callback<BaseListResponse<MessagesModel>> {
 
     RecyclerView rv;
-    List<MessageObj> messagesList;
+    List<MessagesModel> messagesList;
 
     public MessageListFragment() {
         // Required empty public constructor
@@ -48,11 +47,10 @@ public class MessageListFragment extends Fragment implements RecyclerViewOnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_messages_list, container, false);
-
-        LiberiixApplication.getApiRepositoryInstance(getActivity()).getAllMessages( this);
+        String cookie = PreferencesUtils.getPreferencesString(this.getContext(), "cookie");
+        LiberiixApplication.getApiRepositoryInstance(getActivity()).getAllMessages(cookie,  this);
 
         messagesList = new ArrayList<>();
-        messagesList = getValidMessages();
 
         rv = (RecyclerView) view.findViewById(R.id.rv_messages);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -65,27 +63,28 @@ public class MessageListFragment extends Fragment implements RecyclerViewOnItemC
 
     @Override
     public void onItemClick(View view, int position) {
-        //Toast.makeText(getActivity(), messagesList.get(position) + "", Toast.LENGTH_SHORT).show();
+        messagesList.get(position).getId();
+        Toast.makeText(getActivity(), "Pressing: " + messagesList.get(position).getId(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this.getActivity(), ChatActivity.class);
         startActivity(intent);
     }
 
-    private List<MessageObj> getValidMessages() {
+    /*private List<MessageObj> getValidMessages() {
         List<MessageObj> servicesList = new ArrayList<>();
 
         servicesList.add(new MessageObj(1, "Maria Albertina", null));
         servicesList.add(new MessageObj(2, "Rui Ribeiro", null));
         servicesList.add(new MessageObj(3, "Teste", null));
         return servicesList;
-    }
+    }*/
 
 
     @Override
     public void onResponse(@NonNull Call<BaseListResponse<MessagesModel>> call, @NonNull Response<BaseListResponse<MessagesModel>> response) {
         if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
                 && response.body().getBodyResponse().getObj() != null) {
-            Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
-            //rv.setAdapter(new MessagesAdapter(this.getContext(), response.body().getBodyResponse()));
+            messagesList = response.body().getBodyResponse().getObj();
+            rv.setAdapter(new MessagesAdapter(this.getContext(), messagesList));
         } else {
             Toast.makeText(getActivity(), "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
         }

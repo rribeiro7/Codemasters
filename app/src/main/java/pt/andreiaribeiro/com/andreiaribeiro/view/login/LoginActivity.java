@@ -19,6 +19,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.PreferencesUtils;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.register.RegisterActivity;
@@ -84,7 +85,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onResponse(@NonNull Call<BaseResponse<UserAuthInfoModel>> call, @NonNull Response<BaseResponse<UserAuthInfoModel>> response) {
         if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
                 && response.body().getBodyResponse().getObj() != null) {
-            Toast.makeText(this, "Login with success.", Toast.LENGTH_SHORT).show();
+            String cookie = response.headers().get("Set-Cookie");
+            PreferencesUtils.setPreferencesString(getBaseContext(), "cookie", cookie);
             if (radioUserLogin.isChecked()) {
                 Intent intent = new Intent(this, ServicesFilterActivity.class);
                 startActivity(intent);

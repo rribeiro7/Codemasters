@@ -13,17 +13,16 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageObj;
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.Messages;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder> {
 
     private Context context;
-    private List<MessageObj> messagesList;
+    private List<MessagesModel> messagesList;
 
-    public MessagesAdapter(Context context, List<MessageObj> messagesList) {
+    public MessagesAdapter(Context context, List<MessagesModel> messagesList) {
         this.context = context;
         this.messagesList = messagesList;
     }

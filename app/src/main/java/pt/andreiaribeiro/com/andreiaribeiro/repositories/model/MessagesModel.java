@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageObj;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MessagesModel {
 
@@ -16,8 +14,8 @@ public class MessagesModel {
     @JsonProperty("Name")
     private String name;
 
-    //@JsonProperty("Messages")
-    //private List<MessageObj> Messages;
+    @JsonProperty("Messages")
+    private List<MessagesDetailModel> Messages;
 
     public int getId() {
         return id;
@@ -33,5 +31,13 @@ public class MessagesModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<MessagesDetailModel> getMessages() {
+        return Messages;
+    }
+
+    public void setMessages(List<MessagesDetailModel> messages) {
+        Messages = messages;
     }
 }
