@@ -10,12 +10,9 @@ import android.preference.PreferenceManager;
 
 public class PreferencesUtils {
 
-    public static final String PREFERENCES_SONDAGEM = "preferences_sondagem";
-    public static final String TAB_OPINIAO = "tab_opiniao";
-
-    public static String getPreferencesString(Context context, String sondagemId) {
+    public static String getPreferencesString(Context context, String key) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getString(sondagemId, null);
+        return sharedPreferences.getString(key, null);
     }
 
     public static boolean setPreferencesString(Context context, String key, String value) {

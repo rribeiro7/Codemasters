@@ -30,5 +30,5 @@ public interface ApiService {
     Call<BaseResponse<UserModel>> registerUser(@Body RequestBody requestBody);
 
     @POST("MessageWs.asmx/GetAllMessages")
-    Call<BaseListResponse<MessagesModel>> getAllMessages(@Body RequestBody requestBody);
+    Call<BaseListResponse<MessagesModel>> getAllMessages(@Header("Cookie") String cookie, @Body RequestBody requestBody);
 }
