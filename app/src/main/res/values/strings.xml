@@ -44,8 +44,12 @@
     <string name="rs_password">Password</string>
     <string name="rs_register">Registar</string>
 
-
-
+<!-- Schedule one event -->
+    <string name="sch_save">Agendar</string>
+    <string name="sch_price">Preço</string>
+    <string name="sch_duration">Duração</string>
+    <string name="sch_location">Localização</string>
+    <string name="sch_observations">Observações</string>
 
 
 </resources>

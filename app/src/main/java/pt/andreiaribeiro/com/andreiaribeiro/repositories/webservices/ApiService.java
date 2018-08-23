@@ -31,4 +31,7 @@ public interface ApiService {
 
     @POST("MessageWs.asmx/GetAllMessages")
     Call<BaseListResponse<MessagesModel>> getAllMessages(@Header("Cookie") String cookie, @Body RequestBody requestBody);
+
+    @POST("ServiceWs.asmx/NewScheduleEvent")
+    Call<BaseResponse<MessagesModel>> addScheduleEvent(@Header("Cookie") String cookie, @Body RequestBody requestBody);
 }

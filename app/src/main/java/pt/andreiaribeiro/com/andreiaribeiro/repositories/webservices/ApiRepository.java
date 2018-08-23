@@ -92,4 +92,13 @@ public class ApiRepository {
         call.enqueue(cb);
     }
 
+    public void addScheduleEvent(String cookie, int idUser, int idService, double price, String date, int duration, String location,String observations, String lang, @NonNull Callback<BaseResponse<MessagesModel>> cb) {
+
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id_user\": "+ idUser +",\r\n    \"id_service\": "+ idService +",\r\n    \"price\": "+ price +",\r\n    \"date\": \""+ date +"\",\r\n    \"duration\": "+ duration +",\r\n    \"location\": \""+ location +"\",\r\n    \"observations\": \"" + observations + "\",\r\n    \"lang\": \""+ lang +"\"\r\n}");
+
+        Call<BaseResponse<MessagesModel>> call = service.addScheduleEvent(cookie, requestBody);
+        call.enqueue(cb);
+    }
+
 }
