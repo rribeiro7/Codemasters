@@ -44,28 +44,6 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
         linlaHeaderProgress = (RelativeLayout) view.findViewById(R.id.linlaHeaderProgress);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
         LiberiixApplication.getApiRepositoryInstance(this.getActivity()).listProfessional("", 0,0,"",0,0,0, this);
-/*        LiberiixApplication.getApiRepositoryInstance(getActivity()).listProfessional("", 0,
-                0,"",0,0,0,
-                new RetrofitCallbacks<BaseListResponse<SearchProfessionals>>() {
-                    @Override
-                    public void onResponse(Call<BaseListResponse<SearchProfessionals>> call, Response<BaseListResponse<SearchProfessionals>> response) {
-                        if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
-                                && response.body().getBodyResponse().getObj() != null) {
-                            Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
-                            servicesList = response.body().getBodyResponse().getObj();
-                            servicesAdapter.notifyDataSetChanged();
-
-                        } else {
-                            Toast.makeText(getActivity(), "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BaseListResponse<SearchProfessionals>> call, Throwable t) {
-                        Toast.makeText(getActivity(), "ERRO NO DOWNLOAD", Toast.LENGTH_SHORT).show();
-                    }
-                });
-*/
 
         rv = (RecyclerView) view.findViewById(R.id.rv_services);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -79,14 +57,7 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
 
     @Override
     public void onItemClick(View view, int position) {
-//para ficar para sempre comentado
-//        ServicesDetailFragment details = new ServicesDetailFragment();
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            details.setSharedElementEnterTransition(new ServicesDetailFragment());
-//            details.setEnterTransition(new Fade());
-//            setExitTransition(new Fade());
-//            details.setSharedElementReturnTransition(nmew ServicesDetailFragment());
-//        }
+
         servicesList.get(position).getId();
 
         ImageView serviceImage = (ImageView) view.findViewById(R.id.iv_service_photo) ;

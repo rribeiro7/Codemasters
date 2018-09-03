@@ -13,12 +13,14 @@
         android:id="@+id/sch_txtUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="id user"/>
 
         <TextView
             android:id="@+id/sch_txtService"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="id servico"/>
 
         <android.support.design.widget.TextInputLayout
@@ -40,7 +42,8 @@
             android:id="@+id/sch_dateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="date e hora"/>
+            android:padding="15dp"
+            android:text="Data e hora"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
