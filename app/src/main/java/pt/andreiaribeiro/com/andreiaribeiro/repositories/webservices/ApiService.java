@@ -4,6 +4,7 @@ import okhttp3.RequestBody;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesDetailModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
@@ -31,6 +32,12 @@ public interface ApiService {
 
     @POST("MessageWs.asmx/GetAllMessages")
     Call<BaseListResponse<MessagesModel>> getAllMessages(@Header("Cookie") String cookie, @Body RequestBody requestBody);
+
+    @POST("MessageWs.asmx/GetAllMessagesById")
+    Call<BaseListResponse<MessagesDetailModel>> getMessageById(@Header("Cookie") String cookie, @Body RequestBody requestBody);
+
+    @POST("MessageWs.asmx/SendMessage")
+    Call<BaseResponse<MessagesModel>> getSendMessages(@Header("Cookie") String cookie, @Body RequestBody requestBody);
 
     @POST("ServiceWs.asmx/NewScheduleEvent")
     Call<BaseResponse<MessagesModel>> addScheduleEvent(@Header("Cookie") String cookie, @Body RequestBody requestBody);

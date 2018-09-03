@@ -23,6 +23,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.utils.PreferencesUtils;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.register.RegisterActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.schedule.ScheduleActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(this, MessageListActivity.class);
+                //Intent intent = new Intent(this, ScheduleActivity.class);
                 startActivity(intent);
             }
         } else {

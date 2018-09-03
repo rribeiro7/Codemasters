@@ -63,9 +63,10 @@ public class MessageListFragment extends Fragment implements RecyclerViewOnItemC
 
     @Override
     public void onItemClick(View view, int position) {
-        messagesList.get(position).getId();
+        //messagesList.get(position).getId();
         Toast.makeText(getActivity(), "Pressing: " + messagesList.get(position).getId(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this.getActivity(), ChatActivity.class);
+        intent.putExtra("iduser", messagesList.get(position).getId());
         startActivity(intent);
     }
 

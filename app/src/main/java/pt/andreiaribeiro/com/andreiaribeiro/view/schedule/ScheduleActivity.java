@@ -41,26 +41,30 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
     private Button btnSave;
     private EditText etPrice, etDuration,etLocation, etObservations;
 
-    private static final String LANGUARGE = "PT";
+    private static final String LANGUARGE = "en";
 
     private void mockData(){
         tvUser.setText("6");
-        tvService.setText("1000");
-        etPrice.setText("20.0");
-        etDuration.setText("1");
-        etLocation.setText("Rua da avenida, na Cidade");
-        etObservations.setText("verificar se o servico ficou bem gravado na base de dados");
-        tvDate.setText("24-08-2018 12:00");
+        tvService.setText("2087");
+        //etPrice.setText("20.0");
+        //etDuration.setText("1");
+        //etLocation.setText("Rua da avenida, na Cidade");
+        //etObservations.setText("verificar se o servico ficou bem gravado na base de dados");
+        //tvDate.setText("24-08-2018 12:00");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+        Intent intent = getIntent();
+        String idUser = intent.getExtras().getString("id");
+
         mActivity = this;
-        mSimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm ", Locale.getDefault());
+        mSimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
 
         defineLayout();
+        tvUser.setText(idUser);
     }
 
     private void defineLayout(){
@@ -101,7 +105,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onResponse(@NonNull Call<BaseResponse<MessagesModel>> call, @NonNull Response<BaseResponse<MessagesModel>> response) {
         if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
-                && response.body().getBodyResponse().getObj() != null) {
+                && response.body().getBodyResponse().isOk()) {
             Toast.makeText(this, "Schedule sucess.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "There was an error with the Login. Please try again.", Toast.LENGTH_SHORT).show();

@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesDetailModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
@@ -90,6 +91,22 @@ public class ApiRepository {
         RequestBody requestBody = RequestBody.create(mediaType, "");
         Call<BaseListResponse<MessagesModel>> call = service.getAllMessages(cookie, requestBody);
         call.enqueue(cb);
+    }
+
+    public void getMessageById(String cookie, int id, @NonNull Callback<BaseListResponse<MessagesDetailModel>> cb){
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id\": "+ id + "}");
+        Call<BaseListResponse<MessagesDetailModel>> call = service.getMessageById(cookie, requestBody);
+        call.enqueue(cb);
+    }
+
+    //public Call<BaseResponse<MessagesModel>> getSendMessages(String cookie, int id,String message, @NonNull Callback<BaseResponse<MessagesModel>> cb){
+    public Call<BaseResponse<MessagesModel>> getSendMessages(String cookie, int id,String message){
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"destinationId\": "+ id + ",\r\n    \"messageText\": \""+ message + "\"}");
+        return service.getSendMessages(cookie, requestBody);
+        //Call<BaseResponse<MessagesModel>> call = service.getSendMessages(cookie, requestBody);
+        //call.enqueue(cb);
     }
 
     public void addScheduleEvent(String cookie, int idUser, int idService, double price, String date, int duration, String location,String observations, String lang, @NonNull Callback<BaseResponse<MessagesModel>> cb) {
