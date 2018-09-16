@@ -13,7 +13,7 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="termsandconditions">Ao iniciar  sessão, concordo com os <a href="http://www.liberiix.com"> Termos e Serviços</a></string>
+    <string name="termsandconditions">Ao iniciar  sessão, concordo com os <a href="http://liberiix.com/docs/tCclientes_liberiix.htm"> Termos e Serviços</a></string>
     <string name="forgetpassword">Esqueceu sua password?</string>
     <string name="go_to_register">Registar-se</string>
 

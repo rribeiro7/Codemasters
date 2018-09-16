@@ -52,12 +52,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnRegister.setOnClickListener(this);
         radioType = (RadioGroup) findViewById(R.id.radio_login_type);
         radioUserLogin = (RadioButton) findViewById(R.id.radioUser);
-        professionalLogin();
+        TextView txTermos = (TextView) findViewById(R.id.login_termos);
+        txTermos.setMovementMethod(LinkMovementMethod.getInstance());
+        userLogin();
     }
 
     private void professionalLogin() {
         txtEmail.setText("lineuanacletocasqueira@liberiix.com");
         radioType.check(R.id.radioPro);
+    }
+
+    private void userLogin() {
+        txtEmail.setText("teste@test.com");
+        radioType.check(R.id.radioUser);
     }
 
     @Override

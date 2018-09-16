@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesDetailModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
@@ -69,7 +70,6 @@ public class ApiRepository {
         call.enqueue(cb);
     }
 
-    //TODO this is wrong
     public void detailProfessional(int id, @NonNull Callback<BaseProfissional> cb) {
 
         MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
@@ -116,6 +116,12 @@ public class ApiRepository {
 
         Call<BaseResponse<MessagesModel>> call = service.addScheduleEvent(cookie, requestBody);
         call.enqueue(cb);
+    }
+
+    public Call<BaseResponse<KeyValueModel>> getServiceByActivityId(int id) {
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id\": "+ id + "}");
+        return service.getServiceByActivityId(requestBody);
     }
 
 }

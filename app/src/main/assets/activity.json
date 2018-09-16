@@ -1,63 +1,471 @@
 {
 	"d": [{
-		"Key": "1",
-		"Value": "[Act1]"
+		"Key": "17",
+		"Value": "Composers, musicians and singers"
 	},
 		{
-			"Key": "2",
-			"Value": "[Act2]"
+			"Key": "18",
+			"Value": "Dancers and choreographers"
 		},
 		{
-			"Key": "3",
-			"Value": "[Act3]"
+			"Key": "19",
+			"Value": "Actor"
 		},
 		{
-			"Key": "4",
-			"Value": "[Act4]"
+			"Key": "20",
+			"Value": "Disc Jockey"
 		},
 		{
-			"Key": "5",
-			"Value": "[Act5]"
+			"Key": "21",
+			"Value": "Photographer"
 		},
 		{
-			"Key": "6",
-			"Value": "[Act6]"
+			"Key": "22",
+			"Value": "Decorator"
 		},
 		{
-			"Key": "7",
-			"Value": "[Act7]"
+			"Key": "23",
+			"Value": "Agricultor e trabalhador qualificado, da horticultura, floricultura, de viveiros e jardins"
 		},
 		{
-			"Key": "8",
-			"Value": "[Act8]"
+			"Key": "24",
+			"Value": "Chef"
 		},
 		{
-			"Key": "9",
-			"Value": "[Act9]"
+			"Key": "25",
+			"Value": "Cook"
 		},
 		{
-			"Key": "10",
-			"Value": "[Act10]"
+			"Key": "26",
+			"Value": "Bakers, pastrycooks and confectioners"
 		},
 		{
-			"Key": "11",
-			"Value": "[Act11]"
+			"Key": "27",
+			"Value": "Passengers cars, vans and motorcycles driver"
 		},
 		{
-			"Key": "12",
-			"Value": "[Act12]"
+			"Key": "28",
+			"Value": "Bus driver"
 		},
 		{
-			"Key": "13",
-			"Value": "[Act13]"
+			"Key": "29",
+			"Value": "Cleaning workers in private homes, hotels and offices"
 		},
 		{
-			"Key": "14",
-			"Value": "[Act14]"
+			"Key": "30",
+			"Value": "Laundry and clothes-maker"
 		},
 		{
-			"Key": "15",
-			"Value": "[Act15]"
+			"Key": "31",
+			"Value": "Vehicle washer"
+		},
+		{
+			"Key": "32",
+			"Value": "Conference and event organizer"
+		},
+		{
+			"Key": "33",
+			"Value": "Barman & waitress"
+		},
+		{
+			"Key": "34",
+			"Value": "Waitress"
+		},
+		{
+			"Key": "35",
+			"Value": "Barman"
+		},
+		{
+			"Key": "36",
+			"Value": "Mannequin and other models"
+		},
+		{
+			"Key": "37",
+			"Value": "Firework specialist"
+		},
+		{
+			"Key": "38",
+			"Value": "Kitchen helper"
+		},
+		{
+			"Key": "39",
+			"Value": "Medical doctors"
+		},
+		{
+			"Key": "40",
+			"Value": "Nurse"
+		},
+		{
+			"Key": "41",
+			"Value": "Specialist nurses (except in maternal and obstetric health)"
+		},
+		{
+			"Key": "42",
+			"Value": "Specialist in traditional and alternative medicine"
+		},
+		{
+			"Key": "43",
+			"Value": "Acupunctor"
+		},
+		{
+			"Key": "44",
+			"Value": "Homeopath"
+		},
+		{
+			"Key": "45",
+			"Value": "Vet"
+		},
+		{
+			"Key": "46",
+			"Value": "Dentist Doctor"
+		},
+		{
+			"Key": "47",
+			"Value": "Pharmaceutical"
+		},
+		{
+			"Key": "48",
+			"Value": "Physiotherapist"
+		},
+		{
+			"Key": "49",
+			"Value": "Dietician and nutritionist"
+		},
+		{
+			"Key": "50",
+			"Value": "Psychologist"
+		},
+		{
+			"Key": "51",
+			"Value": "Health assistant"
+		},
+		{
+			"Key": "52",
+			"Value": "Family Helper"
+		},
+		{
+			"Key": "53",
+			"Value": "Audiologists and Speech Therapists"
+		},
+		{
+			"Key": "54",
+			"Value": "Clinical analysis technician"
+		},
+		{
+			"Key": "55",
+			"Value": "Lawyers and Solicitors"
+		},
+		{
+			"Key": "56",
+			"Value": "Notary"
+		},
+		{
+			"Key": "57",
+			"Value": "Accountant, auditor, statutory auditor and alike"
+		},
+		{
+			"Key": "58",
+			"Value": "Real estate, insurance and other property appraiser"
+		},
+		{
+			"Key": "59",
+			"Value": "Receptionist, except hotel"
+		},
+		{
+			"Key": "60",
+			"Value": "Financial and investment advisor"
+		},
+		{
+			"Key": "61",
+			"Value": "Economist"
+		},
+		{
+			"Key": "62",
+			"Value": "Sculptor"
+		},
+		{
+			"Key": "63",
+			"Value": "Art Painter"
+		},
+		{
+			"Key": "64",
+			"Value": "Caricaturist"
+		},
+		{
+			"Key": "65",
+			"Value": "Jewelers, goldsmiths and industrial diamond workers"
+		},
+		{
+			"Key": "66",
+			"Value": "Wood articles, basketwork and similar materials craftsman"
+		},
+		{
+			"Key": "67",
+			"Value": "Lace, embroidery and hand-made tapestries craftsman"
+		},
+		{
+			"Key": "68",
+			"Value": "Leather craftsman"
+		},
+		{
+			"Key": "69",
+			"Value": "Woodworkers, cork workers, and alike"
+		},
+		{
+			"Key": "70",
+			"Value": "Tailors, dressmakers, furs and hatters"
+		},
+		{
+			"Key": "71",
+			"Value": "Teachers"
+		},
+		{
+			"Key": "72",
+			"Value": "Childhood educator"
+		},
+		{
+			"Key": "73",
+			"Value": "Special education teacher"
+		},
+		{
+			"Key": "74",
+			"Value": "Information technologies trainer"
+		},
+		{
+			"Key": "75",
+			"Value": "Physical sciences, mathematics, engineering and related sciences specialist"
+		},
+		{
+			"Key": "76",
+			"Value": "Philosophers, historians, and political science specialists"
+		},
+		{
+			"Key": "77",
+			"Value": "Author and writer"
+		},
+		{
+			"Key": "78",
+			"Value": "Journalist"
+		},
+		{
+			"Key": "79",
+			"Value": "Philologists, translators, interpreters and other linguists"
+		},
+		{
+			"Key": "80",
+			"Value": "Coaches, instructors and referees"
+		},
+		{
+			"Key": "81",
+			"Value": "Driving Instructor"
+		},
+		{
+			"Key": "82",
+			"Value": "Physical Activity and Recreation Instructors and Monitors"
+		},
+		{
+			"Key": "83",
+			"Value": "Child Care Assistant"
+		},
+		{
+			"Key": "84",
+			"Value": "Sports and physical activity technicians"
+		},
+		{
+			"Key": "85",
+			"Value": "Physical Activity and Recreation Instructors and Monitors"
+		},
+		{
+			"Key": "86",
+			"Value": "Religious order member and religious support technicians"
+		},
+		{
+			"Key": "87",
+			"Value": "Hairdressers, beauticians and alike"
+		},
+		{
+			"Key": "88",
+			"Value": "Hairdresser and barber"
+		},
+		{
+			"Key": "89",
+			"Value": "Aesthetic masseur"
+		},
+		{
+			"Key": "90",
+			"Value": "Astrologers, fortune tellers and alike"
+		},
+		{
+			"Key": "91",
+			"Value": "Company personnel and room helpers"
+		},
+		{
+			"Key": "92",
+			"Value": "Shoemakers and similar"
+		},
+		{
+			"Key": "93",
+			"Value": "Security (private security guards), porters and alike"
+		},
+		{
+			"Key": "94",
+			"Value": "Other security and safety personnel"
+		},
+		{
+			"Key": "95",
+			"Value": "Police detective and inspectors"
+		},
+		{
+			"Key": "96",
+			"Value": "Decorator"
+		},
+		{
+			"Key": "97",
+			"Value": "Domestic Ruler and Housekeepers"
+		},
+		{
+			"Key": "98",
+			"Value": "Housekeeping and cleaning duties in offices, hotels and other establishments"
+		},
+		{
+			"Key": "99",
+			"Value": "Pet Care Provider"
+		},
+		{
+			"Key": "100",
+			"Value": "Personal care workers and alike"
+		},
+		{
+			"Key": "101",
+			"Value": "Skilled Gardening Worker"
+		},
+		{
+			"Key": "102",
+			"Value": "Plumber and pipe assembler"
+		},
+		{
+			"Key": "103",
+			"Value": "Painters, facade cleaners and alike"
+		},
+		{
+			"Key": "104",
+			"Value": "Building electrician and similar"
+		},
+		{
+			"Key": "105",
+			"Value": "Mechanical and electronic equipment repairman"
+		},
+		{
+			"Key": "106",
+			"Value": "Ants, pests and weeds controllers"
+		},
+		{
+			"Key": "107",
+			"Value": "Window washer"
+		},
+		{
+			"Key": "108",
+			"Value": "Estate agent and property manager"
+		},
+		{
+			"Key": "109",
+			"Value": "Air conditioning and refrigeration systems installer"
+		},
+		{
+			"Key": "110",
+			"Value": "Oxy-gas welders and workers"
+		},
+		{
+			"Key": "111",
+			"Value": "Smithers, blacksmiths, forging press operators, stampers and alike"
+		},
+		{
+			"Key": "112",
+			"Value": "Civil Engineers"
+		},
+		{
+			"Key": "113",
+			"Value": "Architects, town planners, surveyors and designers"
+		},
+		{
+			"Key": "114",
+			"Value": "Supply, warehouse, production and transport Employees"
+		},
+		{
+			"Key": "115",
+			"Value": "Mason, pawl and refractory settler"
+		},
+		{
+			"Key": "116",
+			"Value": "Carpenters and alike"
+		},
+		{
+			"Key": "117",
+			"Value": "Electromechanical, electrician and other electrical machinery and equipment installers"
+		},
+		{
+			"Key": "118",
+			"Value": "Environmental engineer"
+		},
+		{
+			"Key": "119",
+			"Value": "Travel Agent Employee"
+		},
+		{
+			"Key": "120",
+			"Value": "Hotel receptionist"
+		},
+		{
+			"Key": "121",
+			"Value": "Travel assistants, collectors and interpreters"
+		},
+		{
+			"Key": "122",
+			"Value": "Hotel Concierge"
+		},
+		{
+			"Key": "123",
+			"Value": "Vehicles, windows, clothing and other hand cleaning workers"
+		},
+		{
+			"Key": "124",
+			"Value": "Couriers, luggage compartments and distributors"
+		},
+		{
+			"Key": "125",
+			"Value": "Home seller"
+		},
+		{
+			"Key": "126",
+			"Value": "Conference and event organizing"
+		},
+		{
+			"Key": "127",
+			"Value": "Software, web and applications analysts and programmers"
+		},
+		{
+			"Key": "128",
+			"Value": "System administrator"
+		},
+		{
+			"Key": "129",
+			"Value": "Information and communication technologies and user support technical operators"
+		},
+		{
+			"Key": "130",
+			"Value": "Product, Textile, Fashion and Interior Designers"
+		},
+		{
+			"Key": "131",
+			"Value": "Graphic or communication and multimedia designer"
+		},
+		{
+			"Key": "132",
+			"Value": "Sales, Marketing and Public Relations Specialists"
+		},
+		{
+			"Key": "133",
+			"Value": "Drawers and related technicians"
 		}
 	]
 }
