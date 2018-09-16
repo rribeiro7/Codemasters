@@ -24,10 +24,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
+import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.mocks.ObjSpinner;
 import pt.andreiaribeiro.com.andreiaribeiro.mocks.FiltersMock;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * TODO:
@@ -39,7 +47,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
     Button btnServices, btnClean;
     Spinner sActivity;
     Spinner sServices;
-    Spinner sCountry;
+    //Spinner sCountry;
     Spinner sDistrict;
     Spinner sCouncil;
     private AutoCompleteTextView txtGeneric;
@@ -58,7 +66,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
         setLayout();
         loadSpinnerActivity();
 
-        loadSpinnerCountry();
+        loadSpinnerDistrict();
 //        Toast.makeText(this, "Welcome to the services filter screen.", Toast.LENGTH_SHORT).show();
 
         btnServices.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +78,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 intent.putExtra(Constants.FILTER_NAME, txtName.getText().toString());
                 intent.putExtra(Constants.FILTER_ACTIVITY, sActivity.getSelectedItemId());
                 intent.putExtra(Constants.FILTER_SERVICE, sServices.getSelectedItemId());
-                intent.putExtra(Constants.FILTER_COUNTRY, sCountry.getSelectedItemId());
+                //intent.putExtra(Constants.FILTER_COUNTRY, sCountry.getSelectedItemId());
                 intent.putExtra(Constants.FILTER_DISTRICT, sDistrict.getSelectedItemId());
                 intent.putExtra(Constants.FILTER_COUNCIL, sCouncil.getSelectedItemId());
                 startActivity(intent);
@@ -83,7 +91,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 txtName.setText("");
                 sActivity.setSelection(0);
                 sServices.setSelection(0);
-                sCountry.setSelection(0);
+                //sCountry.setSelection(0);
                 sDistrict.setSelection(0);
                 sCouncil.setSelection(0);
             }
@@ -97,7 +105,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
         btnClean = (Button) findViewById(R.id.filter_btnClean);
         sActivity = (Spinner) findViewById(R.id.filter_activity);
         sServices = (Spinner) findViewById(R.id.filter_service);
-        sCountry = (Spinner) findViewById(R.id.filter_country);
+        //sCountry = (Spinner) findViewById(R.id.filter_country);
         sDistrict = (Spinner) findViewById(R.id.filter_district);
         sCouncil = (Spinner) findViewById(R.id.filter_council);
     }
@@ -108,8 +116,8 @@ public class ServicesFilterActivity extends AppCompatActivity {
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset());
             JSONArray m_jArry = obj.getJSONArray("d");
-            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> m_li;
+            //ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            //HashMap<String, String> m_li;
 
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
@@ -137,13 +145,41 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 if(sActivity.getSelectedItem() != null)
                 {
                     objSActivity = (ObjSpinner) sActivity.getSelectedItem();
-                    loadSpinnerServices(FiltersMock.fillServices(objSActivity.getId()));
+                    //loadSpinnerServices(FiltersMock.fillServices(objSActivity.getId()));
+                    if (objSActivity.getId()!=-1) {
+                        callServices(objSActivity.getId());
+                    }
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+    }
+
+    private void callServices(int idAct){
+        Call<BaseResponse<KeyValueModel>> call1 = LiberiixApplication.getApiRepositoryInstance(this).getServiceByActivityId(idAct);
+        call1.enqueue(new Callback<BaseResponse<KeyValueModel>>(){
+            @Override
+            public void onResponse(Call<BaseResponse<KeyValueModel>> call, Response<BaseResponse<KeyValueModel>> response) {
+                if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null) {
+                    Toast.makeText(ServicesFilterActivity.this, "Get Services", Toast.LENGTH_SHORT).show();
+                    /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                            this, android.R.layout.simple_spinner_item, lstServices);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    sServices.setAdapter(adapter);
+                    */
+                } else {
+                    Toast.makeText(ServicesFilterActivity.this, "DEU CERTO MAS SEM SERVICOS", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<KeyValueModel>> call, Throwable t) {
+                Toast.makeText(ServicesFilterActivity.this, "ERRO NO DOWNLOAD DE SERVIÇOS", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -157,6 +193,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
         sServices.setAdapter(adapter);
     }
 
+/*
     private void loadSpinnerCountry(){
         ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
                 this, android.R.layout.simple_spinner_item, FiltersMock.fillCountry());
@@ -183,10 +220,11 @@ public class ServicesFilterActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void loadSpinnerDistrict(List<ObjSpinner> objSpinners) {
+*/
+    //private void loadSpinnerDistrict(List<ObjSpinner> objSpinners) {
+private void loadSpinnerDistrict() {
         ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
-                this, android.R.layout.simple_spinner_item, objSpinners);
+                this, android.R.layout.simple_spinner_item, FiltersMock.fillDistrict(1));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -269,9 +307,9 @@ public class ServicesFilterActivity extends AppCompatActivity {
         if (txtName.getText() !=null){
         Log.i("RUI", "Nome: "+ txtName.getText().toString());
         }
-        if (  sCountry.getSelectedItem()!=null){
+        /*if (  sCountry.getSelectedItem()!=null){
         Log.i("RUI", "Country: "+ sCountry.getSelectedItem().toString());
-        }
+        }*/
         if ( sDistrict.getSelectedItem()!=null){
         Log.i("RUI", "District: "+ sDistrict.getSelectedItem().toString());
         }

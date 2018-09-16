@@ -15,8 +15,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProfessionalModel {
 
-    //TODO See all the columns that don't have primitive data types for the Database. Ignored for now.
-
     @PrimaryKey
     @JsonProperty("ID")
     private int id;
@@ -48,7 +46,7 @@ public class ProfessionalModel {
     @JsonProperty("DistinctActivities")
     private List<String> distinctActivities;
 
-    @JsonProperty("Service")
+    @JsonProperty("Services")
     private List<ServicesModel> services;
 
     @JsonProperty("AvgPrice")

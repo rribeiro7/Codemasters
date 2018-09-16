@@ -14,28 +14,28 @@
         android:layout_alignParentTop="true" />
 
     <TextView
-        android:id="@+id/tv_service_description"
+        android:id="@+id/tv_service_professional"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/iv_service_photo"
-        android:text="DESCTIPTION"
+        android:text="PROFESSIONAL"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_service_professional"
+        android:id="@+id/tv_service_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/tv_service_description"
-        android:layout_below="@id/tv_service_description"
-        android:text="PROFESSIONAL" />
+        android:layout_alignLeft="@id/tv_service_professional"
+        android:layout_below="@id/tv_service_professional"
+        android:text="Descrições" />
 
     <TextView
         android:id="@+id/service_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/tv_service_description"
-        android:layout_below="@id/tv_service_professional"
+        android:layout_alignLeft="@id/tv_service_professional"
+        android:layout_below="@id/tv_service_description"
         android:text="DATE" />
 
 </RelativeLayout>

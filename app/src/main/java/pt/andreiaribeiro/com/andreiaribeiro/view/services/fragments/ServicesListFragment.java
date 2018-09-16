@@ -20,6 +20,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ServicesAdapter;
 import retrofit2.Call;
@@ -43,7 +44,14 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
         View view = inflater.inflate(R.layout.fragment_services_list, container, false);
         linlaHeaderProgress = (RelativeLayout) view.findViewById(R.id.linlaHeaderProgress);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
-        LiberiixApplication.getApiRepositoryInstance(this.getActivity()).listProfessional("", 0,0,"",0,0,0, this);
+        Bundle bundle = getArguments();
+        String strGeneric = bundle.getString(Constants.FILTER_GENERIC);
+        String strName = bundle.getString(Constants.FILTER_NAME);
+        int iActivity = bundle.getInt(Constants.FILTER_ACTIVITY, 0);
+        int iService = bundle.getInt(Constants.FILTER_SERVICE, 0);
+        int iGeoTwo = bundle.getInt(Constants.FILTER_DISTRICT, 0);
+        int iGeoThree = bundle.getInt(Constants.FILTER_COUNCIL, 0);
+        LiberiixApplication.getApiRepositoryInstance(this.getActivity()).listProfessional(strGeneric, iActivity,iService,strName,0,iGeoTwo,iGeoThree, this);
 
         rv = (RecyclerView) view.findViewById(R.id.rv_services);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -58,13 +66,18 @@ public class ServicesListFragment extends Fragment implements RecyclerViewOnItem
     @Override
     public void onItemClick(View view, int position) {
 
-        servicesList.get(position).getId();
+        //servicesList.get(position).getId();
+
+        ServicesDetailFragment frag = new ServicesDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("iduser", servicesList.get(position).getId());
+        frag.setArguments(bundle);
 
         ImageView serviceImage = (ImageView) view.findViewById(R.id.iv_service_photo) ;
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 //.addSharedElement(serviceImage, "service_image")
-                .replace(R.id.container_services, new ServicesDetailFragment(), ServicesDetailFragment.class.getSimpleName())
+                .replace(R.id.container_services, frag, ServicesDetailFragment.class.getSimpleName())
                 .addToBackStack(ServicesDetailFragment.class.getSimpleName())
                 .commit();
     }

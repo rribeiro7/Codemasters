@@ -130,11 +130,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:autoLink="web"
                 android:gravity="center"
                 android:padding="20px"
-                android:clickable="true"
-                android:linksClickable="true"
                 android:text="@string/termsandconditions"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
