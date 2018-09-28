@@ -20,28 +20,18 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 
 import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.mocks.ObjSpinner;
-import pt.andreiaribeiro.com.andreiaribeiro.mocks.FiltersMock;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseKeyValue;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
-import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * TODO:
- * 1- Enable or disabled dos spinners por causa da dependencia
- * 2- Garantir que limpam os spinners caso se mude o item do spinner de hierarquia superior
- */
 public class ServicesFilterActivity extends AppCompatActivity {
 
     Button btnServices, btnClean;
@@ -55,7 +45,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
 
     ObjSpinner objSActivity;
     ObjSpinner objSServices;
-    ObjSpinner objSCountry;
+    //ObjSpinner objSCountry;
     ObjSpinner objSDistrict;
     ObjSpinner objSCouncil;
 
@@ -67,7 +57,6 @@ public class ServicesFilterActivity extends AppCompatActivity {
         loadSpinnerActivity();
 
         loadSpinnerDistrict();
-//        Toast.makeText(this, "Welcome to the services filter screen.", Toast.LENGTH_SHORT).show();
 
         btnServices.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,11 +65,11 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 Intent intent = new Intent(ServicesFilterActivity.this, ServicesListActivity.class);
                 intent.putExtra(Constants.FILTER_GENERIC, txtGeneric.getText().toString());
                 intent.putExtra(Constants.FILTER_NAME, txtName.getText().toString());
-                intent.putExtra(Constants.FILTER_ACTIVITY, sActivity.getSelectedItemId());
-                intent.putExtra(Constants.FILTER_SERVICE, sServices.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_ACTIVITY, objSActivity != null ? objSActivity.getId() : -1);
+                intent.putExtra(Constants.FILTER_SERVICE, objSServices != null ? objSServices.getId() : -1);
                 //intent.putExtra(Constants.FILTER_COUNTRY, sCountry.getSelectedItemId());
-                intent.putExtra(Constants.FILTER_DISTRICT, sDistrict.getSelectedItemId());
-                intent.putExtra(Constants.FILTER_COUNCIL, sCouncil.getSelectedItemId());
+                intent.putExtra(Constants.FILTER_DISTRICT, objSDistrict != null ? objSDistrict.getId() : -1);
+                intent.putExtra(Constants.FILTER_COUNCIL, objSCouncil != null ? objSCouncil.getId() : -1);
                 startActivity(intent);
             }
         });
@@ -90,12 +79,24 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 txtGeneric.setText("");
                 txtName.setText("");
                 sActivity.setSelection(0);
-                sServices.setSelection(0);
+                cleanServices();
                 //sCountry.setSelection(0);
                 sDistrict.setSelection(0);
-                sCouncil.setSelection(0);
+                cleanCouncil();
             }
         });
+    }
+
+    private void cleanServices(){
+        sServices.setSelection(0);
+        sServices.setAdapter(null);
+        objSServices = null;
+    }
+
+    private void cleanCouncil(){
+        sCouncil.setSelection(0);
+        sCouncil.setAdapter(null);
+        objSCouncil = null;
     }
 
     private void setLayout() {
@@ -114,7 +115,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
         List<ObjSpinner> spinnerArray =  new ArrayList<ObjSpinner>();
         spinnerArray.add(new ObjSpinner(-1, "---"));
         try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONObject obj = new JSONObject(loadJSONFromAsset("activity.json"));
             JSONArray m_jArry = obj.getJSONArray("d");
             //ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
             //HashMap<String, String> m_li;
@@ -134,9 +135,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         sActivity.setAdapter(adapter);
-
         sActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
@@ -149,6 +148,9 @@ public class ServicesFilterActivity extends AppCompatActivity {
                     if (objSActivity.getId()!=-1) {
                         callServices(objSActivity.getId());
                     }
+                    else{
+                        cleanServices();
+                    }
                 }
             }
 
@@ -160,76 +162,124 @@ public class ServicesFilterActivity extends AppCompatActivity {
     }
 
     private void callServices(int idAct){
-        Call<BaseResponse<KeyValueModel>> call1 = LiberiixApplication.getApiRepositoryInstance(this).getServiceByActivityId(idAct);
-        call1.enqueue(new Callback<BaseResponse<KeyValueModel>>(){
+        Call<BaseKeyValue<KeyValueModel>> call1 = LiberiixApplication.getApiRepositoryInstance(this).getServiceByActivityId(idAct);
+        call1.enqueue(new Callback<BaseKeyValue<KeyValueModel>>(){
             @Override
-            public void onResponse(Call<BaseResponse<KeyValueModel>> call, Response<BaseResponse<KeyValueModel>> response) {
-                if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null) {
-                    Toast.makeText(ServicesFilterActivity.this, "Get Services", Toast.LENGTH_SHORT).show();
-                    /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            this, android.R.layout.simple_spinner_item, lstServices);
+            public void onResponse(Call<BaseKeyValue<KeyValueModel>> call, Response<BaseKeyValue<KeyValueModel>> response) {
+                if (response.body() != null && response.errorBody() == null && response.body().getLstKeyValue() != null) {
+                    List<ObjSpinner> spinnerArray =  new ArrayList<ObjSpinner>();
+                    for( KeyValueModel objKeyValue : response.body().getLstKeyValue()){
+                        spinnerArray.add(new ObjSpinner(Integer.parseInt(objKeyValue.getKey()), objKeyValue.getValue()));
+                    }
+
+                    ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
+                            getApplication(), android.R.layout.simple_spinner_item, spinnerArray);
 
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sServices.setAdapter(adapter);
-                    */
+                    sServices.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view,
+                                                   int position, long id) {
+
+                            if(sServices.getSelectedItem() != null)
+                            {
+                                objSServices = (ObjSpinner) sServices.getSelectedItem();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+
                 } else {
-                    Toast.makeText(ServicesFilterActivity.this, "DEU CERTO MAS SEM SERVICOS", Toast.LENGTH_SHORT).show();
+                    cleanServices();
+                    Toast.makeText(ServicesFilterActivity.this, "Não foram encontrados serviços", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse<KeyValueModel>> call, Throwable t) {
-                Toast.makeText(ServicesFilterActivity.this, "ERRO NO DOWNLOAD DE SERVIÇOS", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<BaseKeyValue<KeyValueModel>> call, Throwable t) {
+                cleanServices();
+                Toast.makeText(ServicesFilterActivity.this, "Falha no pedido de serviços", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void loadSpinnerServices(List<String> lstServices){
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, lstServices);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        sServices.setAdapter(adapter);
-    }
-
-/*
-    private void loadSpinnerCountry(){
-        ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
-                this, android.R.layout.simple_spinner_item, FiltersMock.fillCountry());
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        sCountry.setAdapter(adapter);
-
-        sCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    private void callCouncil(int idDis){
+        Call<BaseKeyValue<KeyValueModel>> call1 = LiberiixApplication.getApiRepositoryInstance(this).getCouncilsByDistrict(idDis);
+        call1.enqueue(new Callback<BaseKeyValue<KeyValueModel>>(){
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view,
-                                       int position, long id) {
+            public void onResponse(Call<BaseKeyValue<KeyValueModel>> call, Response<BaseKeyValue<KeyValueModel>> response) {
+                if (response.body() != null && response.errorBody() == null && response.body().getLstKeyValue() != null) {
+                    List<ObjSpinner> spinnerArray =  new ArrayList<ObjSpinner>();
+                    for( KeyValueModel objKeyValue : response.body().getLstKeyValue()){
+                        spinnerArray.add(new ObjSpinner(Integer.parseInt(objKeyValue.getKey()), objKeyValue.getValue()));
+                    }
 
-                if(sCountry.getSelectedItem() != null)
-                {
-                    objSCountry = (ObjSpinner) sCountry.getSelectedItem();
-                    loadSpinnerDistrict(FiltersMock.fillDistrict(objSCountry.getId()));
+                    ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
+                            getApplication(), android.R.layout.simple_spinner_item, spinnerArray);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    sCouncil.setAdapter(adapter);
+                    sCouncil.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view,
+                                                   int position, long id) {
+
+                            if(sCouncil.getSelectedItem() != null)
+                            {
+                                objSCouncil = (ObjSpinner) sCouncil.getSelectedItem();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+
+                } else {
+                    cleanCouncil();
+                    Toast.makeText(ServicesFilterActivity.this, "Não foram encontrados Concelhos", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onFailure(Call<BaseKeyValue<KeyValueModel>> call, Throwable t) {
+                cleanCouncil();
+                Toast.makeText(ServicesFilterActivity.this, "Falha no pedido de concelhos", Toast.LENGTH_SHORT).show();
             }
         });
     }
-*/
-    //private void loadSpinnerDistrict(List<ObjSpinner> objSpinners) {
-private void loadSpinnerDistrict() {
+
+    private void loadSpinnerDistrict() {
+        List<ObjSpinner> spinnerArray =  new ArrayList<ObjSpinner>();
+        spinnerArray.add(new ObjSpinner(-1, "---"));
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset("distrito.json"));
+            JSONArray m_jArry = obj.getJSONArray("d");
+            //ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            //HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                int key_value = Integer.parseInt(jo_inside.getString("Key"));
+                String value_value = jo_inside.getString("Value");
+
+                spinnerArray.add(new ObjSpinner(key_value, value_value));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
-                this, android.R.layout.simple_spinner_item, FiltersMock.fillDistrict(1));
+                this, android.R.layout.simple_spinner_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         sDistrict.setAdapter(adapter);
-
         sDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
@@ -238,7 +288,12 @@ private void loadSpinnerDistrict() {
                 if(sDistrict.getSelectedItem() != null)
                 {
                     objSDistrict = (ObjSpinner) sDistrict.getSelectedItem();
-                    loadSpinnerCouncil(FiltersMock.fillCouncil(objSDistrict.getId()));
+                    if (objSDistrict.getId()!=-1) {
+                        callCouncil(objSDistrict.getId());
+                    }
+                    else{
+                        cleanCouncil();
+                    }
                 }
             }
 
@@ -248,7 +303,7 @@ private void loadSpinnerDistrict() {
             }
         });
     }
-
+/*
     private void loadSpinnerCouncil(List<ObjSpinner> objSpinners) {
         ArrayAdapter<ObjSpinner> adapter = new ArrayAdapter<ObjSpinner>(
                 this, android.R.layout.simple_spinner_item, objSpinners);
@@ -275,11 +330,12 @@ private void loadSpinnerDistrict() {
             }
         });
     }
+    */
 
-    public String loadJSONFromAsset() {
+    public String loadJSONFromAsset(String strFilename) {
         String json = null;
         try {
-            InputStream is = this.getAssets().open("activity.json");
+            InputStream is = this.getAssets().open(strFilename);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -296,25 +352,25 @@ private void loadSpinnerDistrict() {
 
     private void saveFilters(){
         if ( txtGeneric.getText()!=null){
-        Log.i("RUI", "Generic: "+ txtGeneric.getText().toString());
+            Log.i("RUI", "Generic: "+ txtGeneric.getText().toString());
         }
         if (sActivity.getSelectedItem() !=null){
-        Log.i("RUI", "Activity: "+ sActivity.getSelectedItem().toString());
+            Log.i("RUI", "Activity: "+ sActivity.getSelectedItem().toString());
         }
         if ( sServices.getSelectedItem()!=null){
-        Log.i("RUI", "ServicesModel: "+ sServices.getSelectedItem().toString());
+            Log.i("RUI", "ServicesModel: "+ sServices.getSelectedItem().toString());
         }
         if (txtName.getText() !=null){
-        Log.i("RUI", "Nome: "+ txtName.getText().toString());
+            Log.i("RUI", "Nome: "+ txtName.getText().toString());
         }
         /*if (  sCountry.getSelectedItem()!=null){
         Log.i("RUI", "Country: "+ sCountry.getSelectedItem().toString());
         }*/
         if ( sDistrict.getSelectedItem()!=null){
-        Log.i("RUI", "District: "+ sDistrict.getSelectedItem().toString());
+            Log.i("RUI", "District: "+ sDistrict.getSelectedItem().toString());
         }
         if ( sCouncil.getSelectedItem()!=null){
-        Log.i("RUI", "Council: "+ sCouncil.getSelectedItem().toString());
+            Log.i("RUI", "Council: "+ sCouncil.getSelectedItem().toString());
         }
     }
 }

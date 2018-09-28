@@ -52,8 +52,8 @@ public class ProfessionalModel {
     @JsonProperty("AvgPrice")
     private String avgPrice;
 
-    //@JsonProperty("Geos")
-    //private List<Geos> geos;
+    @JsonProperty("Geos")
+    private List<GeoModel> geos;
 
     @JsonProperty("MainPhoto")
     private String mainPhoto;
@@ -161,6 +161,14 @@ public class ProfessionalModel {
 
     public void setAvgPrice(String avgPrice) {
         this.avgPrice = avgPrice;
+    }
+
+    public List<GeoModel> getGeos() {
+        return geos;
+    }
+
+    public void setGeos(List<GeoModel> geos) {
+        this.geos = geos;
     }
 
     public String getMainPhoto() {

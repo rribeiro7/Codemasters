@@ -3,6 +3,8 @@ package pt.andreiaribeiro.com.andreiaribeiro.repositories.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchProfessionals {
 
@@ -20,6 +22,9 @@ public class SearchProfessionals {
 
     @JsonProperty("MainPhoto")
     private String mainPhoto;
+
+    @JsonProperty("Services")
+    private List<ServicesModel> services;
 
     public SearchProfessionals() {
     }
@@ -63,5 +68,13 @@ public class SearchProfessionals {
 
     public void setMainPhoto(String mainPhoto) {
         this.mainPhoto = mainPhoto;
+    }
+
+    public List<ServicesModel> getServices() {
+        return services;
+    }
+
+    public void setServices(List<ServicesModel> services) {
+        this.services = services;
     }
 }

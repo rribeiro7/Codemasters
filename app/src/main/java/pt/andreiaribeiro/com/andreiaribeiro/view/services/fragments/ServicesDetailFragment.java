@@ -1,6 +1,5 @@
 package pt.andreiaribeiro.com.andreiaribeiro.view.services.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +22,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.GeoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ServicesModel;
@@ -36,10 +36,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class ServicesDetailFragment extends Fragment implements Callback<BaseProfissional> {
 
-    private TextView txtTitle, txtActivity, txtDateBirth, txtDescription, txtEmail, txtExperience, txtFormation, txtLocation, txtService;
+    private TextView txtTitle, txtActivity, txtGeos, txtDescription, txtExperience, txtFormation, txtLocation, txtService;
     private Button btnSchedule, btnMessage;
     ImageView serviceDetailPhoto;
     ViewPager viewPager;
@@ -84,7 +83,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         viewPager = view.findViewById(R.id.details_gallery);
         txtTitle = (TextView)view.findViewById(R.id.details_txtTitle);
         txtActivity = (TextView)view.findViewById(R.id.details_txtActivity);
-        //txtDateBirth = (TextView)view.findViewById(R.id.details_txtDateBirth);
+        txtGeos = (TextView)view.findViewById(R.id.details_txtGeos);
         txtDescription = (TextView)view.findViewById(R.id.details_txtDescription);
         //txtEmail = (TextView)view.findViewById(R.id.details_txtEmail);
         txtExperience = (TextView)view.findViewById(R.id.details_txtExperience);
@@ -96,15 +95,16 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
     }
 
     private void loadData(ProfessionalModel prof){
+        Picasso.with(getActivity()).load(Constants.BASE_PHOTO + prof.getMainPhoto()).into(serviceDetailPhoto);
+
         if (prof.getOtherPhotos()!=null) {
             String[] arrGallery = new String[prof.getOtherPhotos().size()];
             for (int i = 0; i < prof.getOtherPhotos().size(); i++) {
                 arrGallery[i] = Constants.BASE_PHOTO + prof.getOtherPhotos().get(i);
             }
-            ViewPagerAdapter vpa = new ViewPagerAdapter(getActivity(), arrGallery);
+            ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getContext(), arrGallery);
+            viewPager.setAdapter(vpAdapter);
         }
-        Picasso.with(getActivity()).load(Constants.BASE_PHOTO + prof.getMainPhoto()).into(serviceDetailPhoto);
-
 
         txtTitle.setText(prof.getName());
         //txtDateBirth.setText(prof.getBirthdate());
@@ -112,7 +112,20 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         txtFormation.setText(prof.getFormation());
         //txtActivity.setText(prof.getDistinctActivity().get(0));
         txtService.setText(getService(prof.getServices()));
+        txtGeos.setText(getGeos(prof.getGeos()));
+    }
 
+    private String getGeos(List<GeoModel> geos) {
+        String strLocation = "";
+        for (GeoModel geo: geos){
+            if (geo != null&&geo.getGeo2()!= null){
+                strLocation += geo.getGeo2().getValue() + StringUtils.COMMA;
+            }
+            if (geo != null&&geo.getGeo3()!= null){
+                strLocation += geo.getGeo3().getValue() + StringUtils.DOT ;
+            }
+        }
+        return strLocation ;
     }
 
     private String getService(List<ServicesModel> services) {
@@ -127,15 +140,15 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
     @Override
     public void onResponse(Call<BaseProfissional> call, Response<BaseProfissional> response) {
         if (response.body() != null && response.errorBody() == null && response.body().getProfessionalModel() != null) {
-            Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "DEU CERTO CARA", Toast.LENGTH_SHORT).show();
             loadData(response.body().getProfessionalModel());
         } else {
-            Toast.makeText(getActivity(), "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Não existem resultados.", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onFailure(Call<BaseProfissional> call, Throwable t) {
-        Toast.makeText(getActivity(), "ERRO NO DOWNLOAD", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Não foi possivel efectuar o pedido.", Toast.LENGTH_SHORT).show();
     }
 }
