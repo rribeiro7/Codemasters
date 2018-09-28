@@ -1,1 +1,149 @@
-{}
+{
+  "d": [
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "1",
+      "Value": "Aveiro"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "2",
+      "Value": "Beja"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "3",
+      "Value": "Braga"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "4",
+      "Value": "Bragança"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "5",
+      "Value": "Castelo Branco"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "6",
+      "Value": "Coimbra"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "7",
+      "Value": "Évora"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "8",
+      "Value": "Faro"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "9",
+      "Value": "Guarda"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "44",
+      "Value": "Ilha da Graciosa"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "31",
+      "Value": "Ilha da Madeira"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "48",
+      "Value": "Ilha das Flores"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "32",
+      "Value": "Ilha de Porto Santo"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "41",
+      "Value": "Ilha de Santa Maria"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "45",
+      "Value": "Ilha de São Jorge"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "42",
+      "Value": "Ilha de São Miguel"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "49",
+      "Value": "Ilha do Corvo"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "47",
+      "Value": "Ilha do Faial"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "46",
+      "Value": "Ilha do Pico"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "43",
+      "Value": "Ilha Terceira"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "10",
+      "Value": "Leiria"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "11",
+      "Value": "Lisboa"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "12",
+      "Value": "Portalegre"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "13",
+      "Value": "Porto"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "14",
+      "Value": "Santarém"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "15",
+      "Value": "Setúbal"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "16",
+      "Value": "Viana do Castelo"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "17",
+      "Value": "Vila Real"
+    },
+    {
+      "__type": "TheProj.Serializable.KeyValue",
+      "Key": "18",
+      "Value": "Viseu"
+    }
+  ]
+}

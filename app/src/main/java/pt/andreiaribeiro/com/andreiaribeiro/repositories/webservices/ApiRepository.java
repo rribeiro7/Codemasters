@@ -8,6 +8,7 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseKeyValue;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
@@ -118,10 +119,16 @@ public class ApiRepository {
         call.enqueue(cb);
     }
 
-    public Call<BaseResponse<KeyValueModel>> getServiceByActivityId(int id) {
+    public Call<BaseKeyValue<KeyValueModel>> getServiceByActivityId(int id) {
         MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
         RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id\": "+ id + "}");
         return service.getServiceByActivityId(requestBody);
+    }
+
+    public Call<BaseKeyValue<KeyValueModel>> getCouncilsByDistrict(int id) {
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id\": "+ id + "}");
+        return service.getCouncilsByDistrict(requestBody);
     }
 
 }

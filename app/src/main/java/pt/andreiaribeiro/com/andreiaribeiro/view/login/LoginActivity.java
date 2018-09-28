@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import pt.andreiaribeiro.com.andreiaribeiro.BuildConfig;
 import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private RadioGroup radioType;
     private RadioButton radioButton;
     private RadioButton radioUserLogin;
+    private TextView txTermos, txVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnRegister.setOnClickListener(this);
         radioType = (RadioGroup) findViewById(R.id.radio_login_type);
         radioUserLogin = (RadioButton) findViewById(R.id.radioUser);
-        TextView txTermos = (TextView) findViewById(R.id.login_termos);
+        txTermos = (TextView) findViewById(R.id.login_termos);
         txTermos.setMovementMethod(LinkMovementMethod.getInstance());
+        txVersion = (TextView) findViewById(R.id.login_termos);
+        getVersion();
         userLogin();
+    }
+
+    private void getVersion() {
+        txVersion.setText(BuildConfig.VERSION_NAME + " - " + BuildConfig.VERSION_CODE);
     }
 
     private void professionalLogin() {

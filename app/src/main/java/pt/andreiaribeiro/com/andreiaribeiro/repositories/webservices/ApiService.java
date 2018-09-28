@@ -1,6 +1,7 @@
 package pt.andreiaribeiro.com.andreiaribeiro.repositories.webservices;
 
 import okhttp3.RequestBody;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseKeyValue;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
@@ -44,5 +45,8 @@ public interface ApiService {
     Call<BaseResponse<MessagesModel>> addScheduleEvent(@Header("Cookie") String cookie, @Body RequestBody requestBody);
 
     @POST("ActivityWS.asmx/GetServicesByActivityId")
-    Call<BaseResponse<KeyValueModel>> getServiceByActivityId(@Body RequestBody requestBody);
+    Call<BaseKeyValue<KeyValueModel>> getServiceByActivityId(@Body RequestBody requestBody);
+
+    @POST("GeoWS.asmx/GetGeosThreeByGeoTwo")
+    Call<BaseKeyValue<KeyValueModel>> getCouncilsByDistrict(@Body RequestBody requestBody);
 }

@@ -15,13 +15,16 @@ import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ServicesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.utils.StringUtils;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.Service;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServicesViewHolder> {
 
     private Context context;
     private List<SearchProfessionals> servicesList;
+    String strActServices="";
 
     public ServicesAdapter(Context context, List<SearchProfessionals> serviceList) {
         this.context = context;
@@ -39,7 +42,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     public void onBindViewHolder(ServicesAdapter.ServicesViewHolder holder, int position) {
         holder.description.setText(servicesList.get(position).getDescription());
         holder.professional.setText(servicesList.get(position).getName());
-        holder.date.setText(servicesList.get(position).getBirthdate());
+        strActServices="";
+        for (ServicesModel sModel : servicesList.get(position).getServices()){
+            strActServices+=sModel.getServiceName() + StringUtils.COMMA;
+        }
+        holder.date.setText(strActServices.substring(0, strActServices.length()-1));
         Picasso.with(context).load(Constants.BASE_PHOTO + servicesList.get(position).getMainPhoto()).into(holder.photo);
     }
 
