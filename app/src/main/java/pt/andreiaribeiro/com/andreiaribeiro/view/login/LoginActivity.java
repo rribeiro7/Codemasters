@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         radioUserLogin = (RadioButton) findViewById(R.id.radioUser);
         txTermos = (TextView) findViewById(R.id.login_termos);
         txTermos.setMovementMethod(LinkMovementMethod.getInstance());
-        txVersion = (TextView) findViewById(R.id.login_termos);
+        txVersion = (TextView) findViewById(R.id.login_version);
         getVersion();
         userLogin();
     }

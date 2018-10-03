@@ -131,17 +131,18 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:padding="20px"
+                android:paddingTop="20px"
                 android:text="@string/termsandconditions"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/version"
+                android:id="@+id/login_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="center"
                 android:layout_marginBottom="0dp"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
