@@ -154,7 +154,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/details_ly_location"
+                android:id="@+id/details_ly_avPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -163,12 +163,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Localização: " />
+                    android:text="Preço Médio: " />
 
                 <TextView
-                    android:id="@+id/details_txtLocation"
+                    android:id="@+id/details_txtAvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/details_ly_youtube"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Youtube: " />
+
+                <TextView
+                    android:id="@+id/details_txtYoutube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:clickable="true"
                     android:layout_marginLeft="10dp"
                     android:text="" />
             </LinearLayout>

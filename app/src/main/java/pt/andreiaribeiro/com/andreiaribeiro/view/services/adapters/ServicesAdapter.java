@@ -46,7 +46,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         for (ServicesModel sModel : servicesList.get(position).getServices()){
             strActServices+=sModel.getServiceName() + StringUtils.COMMA;
         }
-        holder.date.setText(strActServices.substring(0, strActServices.length()-1));
+        if (strActServices!="") {
+            holder.date.setText(strActServices.substring(0, strActServices.length() - 1));
+        }
         Picasso.with(context).load(Constants.BASE_PHOTO + servicesList.get(position).getMainPhoto()).into(holder.photo);
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,12 @@ import java.util.List;
 
 import pt.andreiaribeiro.com.andreiaribeiro.LiberiixApplication;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseListResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseProfissional;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseResponse;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.GeoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
-import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ServicesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.StringUtils;
-import pt.andreiaribeiro.com.andreiaribeiro.view.RecyclerViewOnItemClickListener;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.ChatActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.payments.PaymentsActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.adapters.ViewPagerAdapter;
@@ -38,7 +35,7 @@ import retrofit2.Response;
 
 public class ServicesDetailFragment extends Fragment implements Callback<BaseProfissional> {
 
-    private TextView txtTitle, txtActivity, txtGeos, txtDescription, txtExperience, txtFormation, txtLocation, txtService;
+    private TextView txtTitle, txtActivity, txtGeos, txtDescription, txtExperience, txtFormation, txtAvPrice, txtService, txtYoutube;
     private Button btnSchedule, btnMessage;
     ImageView serviceDetailPhoto;
     ViewPager viewPager;
@@ -88,8 +85,10 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         //txtEmail = (TextView)view.findViewById(R.id.details_txtEmail);
         txtExperience = (TextView)view.findViewById(R.id.details_txtExperience);
         txtFormation = (TextView)view.findViewById(R.id.details_txtFormation);
-        txtLocation = (TextView)view.findViewById(R.id.details_txtLocation);
+        txtAvPrice = (TextView)view.findViewById(R.id.details_txtAvPrice);
         txtService = (TextView)view.findViewById(R.id.details_txtService);
+        txtYoutube = (TextView) view.findViewById(R.id.details_txtYoutube);
+        txtYoutube.setMovementMethod(LinkMovementMethod.getInstance());
         btnSchedule = (Button)view.findViewById(R.id.details_btnSchedule);
         btnMessage = (Button)view.findViewById(R.id.details_btnMessage);
     }
@@ -107,12 +106,14 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         }
 
         txtTitle.setText(prof.getName());
-        //txtDateBirth.setText(prof.getBirthdate());
         txtDescription.setText(prof.getDescription());
         txtFormation.setText(prof.getFormation());
         //txtActivity.setText(prof.getDistinctActivity().get(0));
         txtService.setText(getService(prof.getServices()));
         txtGeos.setText(getGeos(prof.getGeos()));
+        txtAvPrice.setText(prof.getAvgPrice());
+        txtExperience.setText(prof.getExperience());
+        txtYoutube.setText(prof.getVideo());
     }
 
     private String getGeos(List<GeoModel> geos) {
