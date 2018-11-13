@@ -9,12 +9,13 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
-    <TextView
-        android:id="@+id/sch_txtUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="id user"/>
+
+        <TextView
+            android:id="@+id/sch_txtUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="id user"/>
 
         <TextView
             android:id="@+id/sch_txtService"
@@ -94,6 +95,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sch_save"/>
-</LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

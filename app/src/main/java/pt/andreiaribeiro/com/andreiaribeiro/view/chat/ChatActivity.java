@@ -110,7 +110,15 @@ public class ChatActivity extends AppCompatActivity implements Callback<BaseList
             public void onResponse(Call<BaseResponse<MessagesModel>> call, Response<BaseResponse<MessagesModel>> response) {
                 if (response.body() != null && response.errorBody() == null && response.body().getBodyResponse() != null
                         && response.body().getBodyResponse().isOk()) {
-                    Toast.makeText(ChatActivity.this, "Mensagem enviada", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ChatActivity.this, "Mensagem enviada", Toast.LENGTH_SHORT).show();
+                    //to scroll the list view to bottom on data change
+                    chatAdapter.registerDataSetObserver(new DataSetObserver() {
+                        @Override
+                        public void onChanged() {
+                            super.onChanged();
+                            lvChat.setSelection(chatAdapter.getCount() - 1);
+                        }
+                    });
                 } else {
                     Toast.makeText(ChatActivity.this, "DEU CERTO MAS SEM RESPOSTA", Toast.LENGTH_SHORT).show();
                 }
