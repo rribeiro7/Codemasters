@@ -25,26 +25,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="12">
 
             <Button
                 android:id="@+id/bt_messagetoschedule"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:layout_weight="4"
                 android:text="Schedule" />
 
             <EditText
                 android:id="@+id/et_message"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="2" />
+                android:layout_weight="5" />
 
             <Button
                 android:id="@+id/bt_send_message"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:text="Send" />
 
         </LinearLayout>

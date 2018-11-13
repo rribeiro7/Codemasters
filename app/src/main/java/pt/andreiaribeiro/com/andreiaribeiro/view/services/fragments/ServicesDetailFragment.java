@@ -36,8 +36,8 @@ import retrofit2.Response;
 public class ServicesDetailFragment extends Fragment implements Callback<BaseProfissional> {
 
     private TextView txtTitle, txtActivity, txtGeos, txtDescription, txtExperience, txtFormation, txtAvPrice, txtService, txtYoutube;
-    private Button btnSchedule, btnMessage;
-    ImageView serviceDetailPhoto;
+    private Button btnMessage;
+    //ImageView serviceDetailPhoto;
     ViewPager viewPager;
 
     public ServicesDetailFragment() {
@@ -57,14 +57,6 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
 
         LiberiixApplication.getApiRepositoryInstance(getActivity()).detailProfessional(idUser, this);
 
-        btnSchedule.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplication(), PaymentsActivity.class);
-                startActivity(intent);
-            }
-        } );
-
         btnMessage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -76,7 +68,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
     }
 
     private void setLayout(View view){
-        serviceDetailPhoto = (ImageView) view.findViewById(R.id.iv_service_image_detail);
+        //serviceDetailPhoto = (ImageView) view.findViewById(R.id.iv_service_image_detail);
         viewPager = view.findViewById(R.id.details_gallery);
         txtTitle = (TextView)view.findViewById(R.id.details_txtTitle);
         txtActivity = (TextView)view.findViewById(R.id.details_txtActivity);
@@ -89,21 +81,25 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         txtService = (TextView)view.findViewById(R.id.details_txtService);
         txtYoutube = (TextView) view.findViewById(R.id.details_txtYoutube);
         txtYoutube.setMovementMethod(LinkMovementMethod.getInstance());
-        btnSchedule = (Button)view.findViewById(R.id.details_btnSchedule);
         btnMessage = (Button)view.findViewById(R.id.details_btnMessage);
     }
 
     private void loadData(ProfessionalModel prof){
-        Picasso.with(getActivity()).load(Constants.BASE_PHOTO + prof.getMainPhoto()).into(serviceDetailPhoto);
+        //Picasso.with(getActivity()).load(Constants.BASE_PHOTO + prof.getMainPhoto()).into(serviceDetailPhoto);
+        int iGallSize=1;
+        if (prof.getOtherPhotos()!=null) {
+            iGallSize +=  prof.getOtherPhotos().size();
+        }
+        String[] arrGallery = new String[iGallSize];
+        arrGallery[0] = Constants.BASE_PHOTO + prof.getMainPhoto();
 
         if (prof.getOtherPhotos()!=null) {
-            String[] arrGallery = new String[prof.getOtherPhotos().size()];
-            for (int i = 0; i < prof.getOtherPhotos().size(); i++) {
+            for (int i = 1; i < iGallSize; i++) {
                 arrGallery[i] = Constants.BASE_PHOTO + prof.getOtherPhotos().get(i);
             }
-            ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getContext(), arrGallery);
-            viewPager.setAdapter(vpAdapter);
         }
+        ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getContext(), arrGallery);
+        viewPager.setAdapter(vpAdapter);
 
         txtTitle.setText(prof.getName());
         txtDescription.setText(prof.getDescription());

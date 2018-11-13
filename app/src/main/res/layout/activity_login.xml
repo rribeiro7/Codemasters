@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/theprojlogo"/>
 
             <RadioGroup
                 android:id="@+id/radio_login_type"
@@ -102,7 +102,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@color/colorBlue3"
                 android:text="@string/action_sign_in"
+                android:textColor="@color/colorBlue6"
                 android:textStyle="bold" />
 
             <TextView
@@ -121,8 +123,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@color/colorBlue3"
                 android:text="@string/go_to_register"
-                android:background="@color/colorPrimary"
+                android:textColor="@color/colorBlue6"
                 android:textStyle="bold" />
 
             <TextView

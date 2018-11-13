@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txTermos.setMovementMethod(LinkMovementMethod.getInstance());
         txVersion = (TextView) findViewById(R.id.login_version);
         getVersion();
-        userLogin();
+        professionalLogin();
     }
 
     private void getVersion() {

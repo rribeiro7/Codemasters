@@ -24,13 +24,13 @@
     <string name="action_go_to_detail">Details</string>
     <string name="action_go_to_schedule">Schedule</string>
     <string name="action_go_to_payments">Payments</string>
-    <string name="action_go_to_chat">Mensagens</string>
+    <string name="action_go_to_chat">Contatar</string>
 
     <!-- Filter screen -->
     <string name="filter_generic">Generic Search</string>
     <string name="filter_activity">Activity</string>
     <string name="filter_services">Services</string>
-    <string name="filter_name">Name</string>
+    <string name="filter_name">Professional Name</string>
     <string name="filter_email">Email</string>
     <string name="filter_country">Country</string>
     <string name="filter_district">District</string>
@@ -46,8 +46,8 @@
 
 <!-- Schedule one event -->
     <string name="sch_save">Agendar</string>
-    <string name="sch_price">Preço</string>
-    <string name="sch_duration">Duração</string>
+    <string name="sch_price">Preço (€)</string>
+    <string name="sch_duration">Duração (horas)</string>
     <string name="sch_location">Localização</string>
     <string name="sch_observations">Observações</string>
 
