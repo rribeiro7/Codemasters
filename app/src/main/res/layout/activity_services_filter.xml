@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:context="pt.andreiaribeiro.com.andreiaribeiro.view.lstKeyValue.activities.ServicesFilterActivity">-->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -119,6 +121,17 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:itemBackground="@color/bgBottomNavigation"
+        android:itemIconTint="@android:color/white"
+        android:itemTextColor="@android:color/white"
+        android:menu="@menu/navigation" />
 
 </ScrollView>
 

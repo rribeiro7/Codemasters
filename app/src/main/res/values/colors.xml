@@ -9,4 +9,5 @@
     <color name="colorBlue4">#2787B7</color><!--39 135 183-->
     <color name="colorBlue5">#035D8F</color><!--3 93 143-->
     <color name="colorBlue6">#024669</color><!--2 70 105-->
+    <color name="bgBottomNavigation">#fe485a</color>
 </resources>

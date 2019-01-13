@@ -2,8 +2,11 @@ package pt.andreiaribeiro.com.andreiaribeiro.view.services.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -85,6 +88,28 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 cleanCouncil();
             }
         });
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.navigation_shop:
+
+                        return true;
+                    case R.id.navigation_gifts:
+
+                        return true;
+                    case R.id.navigation_cart:
+
+                        return true;
+                }
+                return false;
+            }
+        };
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void cleanServices(){
