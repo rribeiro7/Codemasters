@@ -16,6 +16,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesDetailModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SchedulerInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserModel;
@@ -130,5 +131,15 @@ public class ApiRepository {
         RequestBody requestBody = RequestBody.create(mediaType, "{\r\n    \"id\": "+ id + "}");
         return service.getCouncilsByDistrict(requestBody);
     }
+
+    public void getAllSchedules(String cookie, @NonNull Callback<BaseResponse<SchedulerInfoModel>> cb) {
+
+        MediaType mediaType = MediaType.parse("application/json; chartset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, "");
+
+        Call<BaseResponse<SchedulerInfoModel>> call = service.getAllSchedules(cookie, requestBody);
+        call.enqueue(cb);
+    }
+
 
 }

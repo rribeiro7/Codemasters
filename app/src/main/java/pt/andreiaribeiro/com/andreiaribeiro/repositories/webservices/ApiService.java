@@ -9,6 +9,7 @@ import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesDetailModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.MessagesModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.ProfessionalModel;
+import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SchedulerInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.SearchProfessionals;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserAuthInfoModel;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.UserModel;
@@ -49,4 +50,7 @@ public interface ApiService {
 
     @POST("GeoWS.asmx/GetGeosThreeByGeoTwo")
     Call<BaseKeyValue<KeyValueModel>> getCouncilsByDistrict(@Body RequestBody requestBody);
+
+    @POST("ServiceWS.asmx/GetMySchedules")
+    Call<BaseResponse<SchedulerInfoModel>> getAllSchedules(@Header("Cookie") String cookie, @Body RequestBody requestBody);
 }

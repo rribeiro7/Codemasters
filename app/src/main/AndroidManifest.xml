@@ -27,6 +27,7 @@
         <activity android:name=".view.chat.ChatActivity" />
         <activity android:name=".view.chat.MessageListActivity" />
         <activity android:name=".view.schedule.ScheduleActivity" />
+        <activity android:name=".view.schedule.activities.ScheduleListActivity" />
     </application>
 
 </manifest>
