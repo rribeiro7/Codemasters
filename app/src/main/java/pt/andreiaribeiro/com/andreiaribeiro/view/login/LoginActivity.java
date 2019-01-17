@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txTermos.setMovementMethod(LinkMovementMethod.getInstance());
         txVersion = (TextView) findViewById(R.id.login_version);
         getVersion();
-        professionalLogin();
+        //userLogin();
     }
 
     private void getVersion() {
@@ -108,8 +108,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent = new Intent(this, ServicesFilterActivity.class);
                 startActivity(intent);
             } else {
-                //Intent intent = new Intent(this, MessageListActivity.class);
-                Intent intent = new Intent(this, ScheduleListActivity.class);
+                Intent intent = new Intent(this, MessageListActivity.class);
+                //Intent intent = new Intent(this, ScheduleListActivity.class);
                 startActivity(intent);
             }
         } else {

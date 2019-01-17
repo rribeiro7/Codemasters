@@ -39,6 +39,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
     private Button btnMessage;
     //ImageView serviceDetailPhoto;
     ViewPager viewPager;
+    int idUser=0;
 
     public ServicesDetailFragment() {
     }
@@ -49,7 +50,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
         View view = inflater.inflate(R.layout.fragment_services_detail, container, false);
         setLayout(view);
 
-        int idUser=0;
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             idUser = bundle.getInt("iduser", 0);
@@ -61,6 +62,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplication(), ChatActivity.class);
+                intent.putExtra("iduser", idUser);
                 startActivity(intent);
             }
         } );
@@ -95,7 +97,7 @@ public class ServicesDetailFragment extends Fragment implements Callback<BasePro
 
         if (prof.getOtherPhotos()!=null) {
             for (int i = 1; i < iGallSize; i++) {
-                arrGallery[i] = Constants.BASE_PHOTO + prof.getOtherPhotos().get(i);
+                arrGallery[i] = Constants.BASE_PHOTO + prof.getOtherPhotos().get(i-1);
             }
         }
         ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getContext(), arrGallery);
