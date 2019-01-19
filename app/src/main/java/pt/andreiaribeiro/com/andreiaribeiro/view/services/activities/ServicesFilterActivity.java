@@ -2,8 +2,11 @@ package pt.andreiaribeiro.com.andreiaribeiro.view.services.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,11 +31,12 @@ import pt.andreiaribeiro.com.andreiaribeiro.mocks.ObjSpinner;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.BaseKeyValue;
 import pt.andreiaribeiro.com.andreiaribeiro.repositories.model.KeyValueModel;
 import pt.andreiaribeiro.com.andreiaribeiro.utils.Constants;
+import pt.andreiaribeiro.com.andreiaribeiro.view.BaseActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ServicesFilterActivity extends AppCompatActivity {
+public class ServicesFilterActivity extends BaseActivity {
 
     Button btnServices, btnClean;
     Spinner sActivity;
@@ -52,7 +56,7 @@ public class ServicesFilterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_filter);
+        //setContentView(R.layout.activity_services_filter);
         setLayout();
         loadSpinnerActivity();
 
@@ -85,6 +89,16 @@ public class ServicesFilterActivity extends AppCompatActivity {
                 cleanCouncil();
             }
         });
+    }
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_services_filter;
+    }
+
+    @Override
+    public int getNavigationMenuItemId() {
+        return R.id.navigation_search;
     }
 
     private void cleanServices(){
@@ -373,4 +387,6 @@ public class ServicesFilterActivity extends AppCompatActivity {
             Log.i("RUI", "Council: "+ sCouncil.getSelectedItem().toString());
         }
     }
+
+
 }

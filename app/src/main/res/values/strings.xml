@@ -51,5 +51,10 @@
     <string name="sch_location">Localização</string>
     <string name="sch_observations">Observações</string>
 
+    <!-- Bottom Navigation -->
+    <string name="menu_mensagem">Mensagem</string>
+    <string name="menu_pesquisa">Pesquisa</string>
+    <string name="menu_schedule">Agendamento</string>
+
 
 </resources>
