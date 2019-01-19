@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_shop"
-        android:icon="@drawable/ic_calendar"
-        android:title="@string/title_shop" />
+        android:id="@+id/navigation_calendar"
+
+        android:title="@string/menu_schedule" />
 
     <item
-        android:id="@+id/navigation_gifts"
-        android:icon="@drawable/ic_chat"
-        android:title="@string/title_gifts" />
+        android:id="@+id/navigation_chat"
+
+        android:title="@string/menu_mensagem" />
 
     <item
-        android:id="@+id/navigation_cart"
-        android:icon="@drawable/ic_search"
-        android:title="@string/title_cart" />
+        android:id="@+id/navigation_search"
+
+        android:title="@string/menu_pesquisa" />
 
 </menu>
