@@ -105,9 +105,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String cookie = response.headers().get("Set-Cookie");
             PreferencesUtils.setPreferencesString(getBaseContext(), "cookie", cookie);
             if (radioUserLogin.isChecked()) {
+                PreferencesUtils.setPreferencesBoolean(getBaseContext(), "user", true);
                 Intent intent = new Intent(this, ServicesFilterActivity.class);
                 startActivity(intent);
             } else {
+                PreferencesUtils.setPreferencesBoolean(getBaseContext(), "user", false);
                 Intent intent = new Intent(this, MessageListActivity.class);
                 //Intent intent = new Intent(this, ScheduleListActivity.class);
                 startActivity(intent);
