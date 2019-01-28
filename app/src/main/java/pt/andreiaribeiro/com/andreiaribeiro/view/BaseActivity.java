@@ -11,12 +11,13 @@ import android.view.MenuItem;
 import pt.andreiaribeiro.com.andreiaribeiro.R;
 import pt.andreiaribeiro.com.andreiaribeiro.view.chat.MessageListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.schedule.ScheduleActivity;
+import pt.andreiaribeiro.com.andreiaribeiro.view.schedule.activities.ScheduleListActivity;
 import pt.andreiaribeiro.com.andreiaribeiro.view.services.activities.ServicesFilterActivity;
 
 public abstract class BaseActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     protected BottomNavigationView navigationView;
-    public int idMenuUser;
+    int idMenuUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             int itemId = item.getItemId();
-            if (itemId == R.id.navigation_calendar) {
-                startActivity(new Intent(this, ScheduleActivity.class));
-            } else if (itemId == R.id.navigation_chat) {
+            if (itemId == R.id.navigation_calendar && idMenuUser != itemId) {
+                startActivity(new Intent(this, ScheduleListActivity.class));
+            } else if (itemId == R.id.navigation_chat && idMenuUser != itemId) {
                 startActivity(new Intent(this, MessageListActivity.class));
-            } else if (itemId == R.id.navigation_search) {
+            } else if (itemId == R.id.navigation_search && idMenuUser != itemId) {
                 startActivity(new Intent(this, ServicesFilterActivity.class));
             }
             return true;
@@ -60,6 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
     }
 
     void selectBottomNavigationBarItem(int itemId) {
+        idMenuUser = itemId;
         Menu menu = navigationView.getMenu();
         for (int i = 0, size = menu.size(); i < size; i++) {
             MenuItem item = menu.getItem(i);

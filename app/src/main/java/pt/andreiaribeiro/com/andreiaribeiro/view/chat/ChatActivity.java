@@ -39,6 +39,7 @@ public class ChatActivity extends AppCompatActivity implements Callback<BaseList
     private Button btSchedule;
     private int idUser=-1;
     String cookie;
+    private boolean isUser=false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class ChatActivity extends AppCompatActivity implements Callback<BaseList
         Intent intent = getIntent();
         idUser = intent.getExtras().getInt("iduser");
         cookie = PreferencesUtils.getPreferencesString(this, "cookie");
+        isUser = PreferencesUtils.getPreferencesBoolean(this, "user");
+
         LiberiixApplication.getApiRepositoryInstance(this).getMessageById(cookie,idUser,this);
 
         chatMessageList = new ArrayList<>();
@@ -80,7 +83,13 @@ public class ChatActivity extends AppCompatActivity implements Callback<BaseList
             }
         });
 
+
         btSchedule = (Button) findViewById(R.id.bt_messagetoschedule);
+        if(isUser){
+            btSchedule.setVisibility(View.GONE);
+        }else{
+            btSchedule.setVisibility(View.VISIBLE);
+        }
         btSchedule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
